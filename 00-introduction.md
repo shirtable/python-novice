@@ -16,3 +16,10 @@ The goal of this workshop is to take people with very little to no programming e
 * visualization
 * importing modules and libraries
 * the OOP nature of python
+
+
+What is programming?
+====================
+I like to think of programming as the following:
+
+    Programming is a human telling a computer how to manipulate data.
