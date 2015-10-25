@@ -4,6 +4,10 @@ In this lesson we will learn some very basic functionality of python.
 
 Concepts
 --------
+* Human-computer interaction via `print` command
+* Entering python commands into the interpreter shell (or ipython notebook)
+* Variables
+* Code comments
 
 
 Hello world!
@@ -125,3 +129,7 @@ wont-work = "nope."
 Comments
 --------
 Comments are text in code, but which isn't executed by the Python interpreter.
+
+
+Conclusion
+==========
