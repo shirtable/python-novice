@@ -44,24 +44,28 @@ Its important to note that when we tell the Python interpreter to execute code, 
 
 Variables
 ---------
-A key concept in any type of programming is the idea of a varaible. A variable is a reference to some data. Up to this point we have not been using variables, we have been using literal values of strings and numbers. For example, we've seen the literal string `"Hello world"` and the integers `2`, `4`, `6`, and `8`. With variables we can abstract functionality from literal values. Consider an example:
+A key concept in any type of programming is the idea of a varaible. A variable is a reference to some data. Up to this point we have not been using variables, we have been using literal values of strings and numbers. For example, we've seen the literal string `"Hello world"` and the integers `2`, `4`, `6`, and `8`. With variables we can abstract functionality from literal values. 
+
+Lets look at some examples using the baby name data. We can use the data.gov browser to preview the data, but we can only get the first 1000 lines. This file isn't too big (6.1M), but it contains 295,194 lines.
 
 ```python
-hello = "Hello world!"
-print hello
->>> Hello world!
+first_baby_name = "Daniel"
+print first_baby_name
+>>> Daniel
 
-# Area of a rectangle of width 2 and length 4.
-length = 4
-width = 2
-area = length * width
-print area
->>> 8
+# Number of male babies with the three most popular names
+first_baby_number = 3423
+second_baby_number = 3106
+third_baby_number = 3058
+
+top_three_names = first_baby_number + second_baby_number + third_baby_number
+print top_three_names
+>>> 9587
 ```
 
-In this example, we assign values to variables. In the first part of the example, we created a variable called `hello` to hold the string `"Hello world!"`. When we pass the `hello` variable to the `print` function, `print` prints the contents of that variable.
+In this example, we assign values to variables. In the first part of the example, we created a variable called `first_baby_name` to hold the string `"Daniel"`. When we pass the `first_baby_name` variable to the `print` function, `print` prints the contents of that variable.
 
-In the second part of the example, we assigned the integer `4` to the variable `length`, the integer `2` to the variable `width`, and the product of the two to the variable `area`. Again, the `print` function simply prints the contents of the `area` variable (as opposed to its name).
+In the second part of the example, we assigned the integer `3423` to the variable `first_baby_number`, the integer `3106` to the variable `second_baby_number`, and the integer `3058` to the variable `third_baby_number`. We summed the three variables and assigned the result to the variable `top_three_names`. Again, the `print` function simply prints the contents of the `top_three_names` variable (as opposed to its name).
 
 Once variables have been set, they can be rewritten. This behavior can be confusing and zings even the most experienced programmers from time to time. Let's look at an example.
 
