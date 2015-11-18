@@ -132,8 +132,9 @@ wont-work = "nope."
 
 Comments
 --------
-Comments are text in code, but which isn't executed by the Python interpreter.
+Comments are text in code, but which isn't executed by the Python interpreter. Comments begin with the `#` character (pound, not hashtag). As soon as the Python interpreter encouters the comment character on a line, it ignores the rest of the line. Comments are a great way to document your code as well as temporarily switch off certain lines from executing.
 
 
 Conclusion
 ==========
+We have demonstrated some basic functionality of Python by interacting with the Python interpreter via the jupyter notebook and `print` statements. We've also encountered variables.
