@@ -149,3 +149,11 @@ You'll notice that we used strings as keys in the dictionary above. Python allow
 Tuples
 ------
 We won't spend much time at all on tuples except to say they are an immutable list. Tuples have important uses, but we won't need them in this course. However, they appear often enough that you should be aware of their existance.
+
+Tuples are created using parantheses instead of square brackets:
+
+```python
+tup = (1, 2, 3)
+print tup
+>>> (1, 2, 3)
+```
