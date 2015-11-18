@@ -103,7 +103,14 @@ rapper = dos + end
 * Why did the first thing work?
 * Why did the second thing fail?
 
-(COMMENTS ABOUT TYPE).
+In order to handle data, computers have to be very explicit about what exactly the data is. The Python interpreter knows how to store and operate on data based on what kind of data it is, i.e. its "type." So far we've encountered *three* types of data:
+
+* string
+* int
+* float
+
+Its clear why strings and numbers would be different types. Its probably not immediately clear why integers and floats are different types, but just know that, again, there are good computer science reasons that aren't relevant to the task at hand (having partially to do with memory allocation and representation).
+
 
 Sometimes we can change the type.
 
@@ -176,6 +183,8 @@ The idea of type brings us to another idea this is fundamental to Python in part
 
 * An object combines data with functionality.
 * Everything in Python is an object. Everything.
+
+Object orientation is a large, complex, and sometimes controversial topic and we aren't going to belabor it here. Many Python teachers would avoid it all together because at this stage in your programming life there's not much practical use. However, it is an underlying principle of the language and some aspects of Python seem bizarre without understanding Python's object orientation.
 
 We've already seen some examples of the first point when we were dealing with strings:
 
@@ -269,3 +278,10 @@ dir(jrs)
 ```
 
 In fact, the functionality to combine strings using `+` is listed if you know where to look; its the `__add__` method. This method is specially named so that the python interpreter knows to call it when it sees `+` combining two strings.
+
+We aren't going to give examples of all this functionality, but you are encouraged to read [Python's excellent documentation]() if you are interested in learning more.
+
+
+Conclusion
+==========
+In this lesson, we explored strings and numbers. We saw some of the functionality of strings. We encountered the concept of "type" and how type can be changed. Finally, we mentioned the OOP nature of Python and how object orientation figures into type.
