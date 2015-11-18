@@ -48,3 +48,18 @@ Some questions we could answer using this data set:
 
 These are the kinds of questions that one could answer with Excel and a few hours, but we are going to address them using Python. We will start small, but then build on what we've learned throughout the day.
 
+
+Structure
+=========
+Part 1: Data
+------------
+* Basics
+* Strings, numbers and typeness
+* Containers: lists and dictionaries
+
+
+Part 2: Flow
+------------
+* Control statements
+* Looping and iteration
+* Reading and writing files
