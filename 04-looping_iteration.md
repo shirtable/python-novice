@@ -55,4 +55,8 @@ Lets look at one more example. One way of structuring the baby name data would b
 
 Indentation
 -----------
-Here we need to talk about not just practical, but philosophical as well.
+Notice that the code block immediately following the `for` loop call is indented. This indentation serves two purposes. First, this indentation is how Python knows what is part of the body of the `for` loop: every line that is indented to the same extent is understood to be part of the `for` loop body. To write code after the `for` loop, simply write code with no indentation.
+
+The second purpose of indentation is to promote code readability. It turns out that writing code for a machine to read and execute is much easier than writing code for another person to read. You should also note that "another person" could mean you, six months from now. Indenting code makes the code much more readable than having all the lines at the same level of indentation.
+
+Another important aspect of indentation in Python is consistency. The Python interpreter does not care if you use spaces or tabs to indicate the body of a loop, nor does it care how many you use as long as you use the same number. People have determined that the convention is to use **four** space characters for an indentation. Please follow this convention and do not use tabs.
