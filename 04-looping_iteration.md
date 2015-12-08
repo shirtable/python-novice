@@ -1,5 +1,6 @@
-Looping and iteration
-=====================
+Title: Looping and iteration
+Category: Lessons
+
 One of the best things about computers is that you can instruct them to perform the same action over and over again. This repitition is commonly called "looping" and is more generally called "iteration." Iteration in Python is a fundamental building block of the language and is strongly tied to container data types.
 
 

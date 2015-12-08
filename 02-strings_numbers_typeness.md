@@ -1,5 +1,6 @@
-Strings, numbers, and typeness
-==============================
+Title: Strings, numbers, and typeness
+Category: Lessons
+
 In this lesson we are going to look more closely at strings and numbers in Python. In so doing we are going to encounter the concept of "type." We will also encounter Python's conception of object-oriented programming.
 
 

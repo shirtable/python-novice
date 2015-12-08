@@ -1,5 +1,6 @@
-The absolute basics of python
-=============================
+Title: The absolute basics of python
+Category: Lessons
+
 In this lesson we will learn some very basic functionality of python.
 
 Concepts

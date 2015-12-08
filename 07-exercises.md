@@ -1,5 +1,6 @@
-Putting everything together
-===========================
+Title: Putting everything together
+Category: Lessons
+
 At this point, we've covered many topics including:
 
 * variables

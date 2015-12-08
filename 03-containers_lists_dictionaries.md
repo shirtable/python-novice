@@ -1,5 +1,6 @@
-Containers: lists and dictionaries
-==================================
+Title: Containers: lists and dictionaries
+Category: Lessons
+
 Up to this point, we've encountered data types that hold only one piece of data. Python has several data types which can be thought of as containers of several data types. We will cover three:
 
 * lists

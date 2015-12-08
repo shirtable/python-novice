@@ -1,5 +1,6 @@
-Reading from and writing to files
-=================================
+Title: Reading from and writing to files
+Category: Lessons
+
 Oftentimes data is located in files and we need to be able to read it into a variable (or several variables). Conversely, data may be in variables and we want to write it to a file. This file I/O (input/output) is another fundamental principle of programming, and many operations in Python share this same pattern. We will explore reading data from and writing data to files in this lesson. Both operations will build on what we just learned about strings, lists, and iteration.
 
 
