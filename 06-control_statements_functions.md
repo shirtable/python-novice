@@ -28,15 +28,18 @@ Using the `elif` statement, we can select from more than a single choice. Lets s
 ```python
 babies_2011 = []
 babies_2012 = []
+babies_other = []
 
 for baby_datum in baby_data:
     if baby_datum.startswith("2011"):
         babies_2011.append(baby)
     elif baby_datum.startswith("2012"):
         babies_2012.append(baby)
+    else:
+        babies_other.append(baby_datum)
 ```
 
-NOTE: NEED EXAMPLE IN WHICH WE CAN MENTION THE `else` CLAUSE.
+One other addition to this example is the `else` statement. You can put it at the end of an `if` statement to catch any case that wasn't listed in the `if`, `elif` conditions.
 
 
 Functions
