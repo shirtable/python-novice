@@ -56,13 +56,18 @@ Structure
 =========
 Part 1: Data
 ------------
-* Basics
-* Strings, numbers and typeness
-* Containers: lists and dictionaries
+* [Basics]({filename}/pages/01-basics.md)
+* [Strings, numbers and typeness]({filename}/pages/02-strings_numbers_typeness.md)
+* [Containers: lists and dictionaries]({filename}/pages/03-containers_lists_dictionaries.md)
 
 
 Part 2: Flow
 ------------
-* Control statements
-* Looping and iteration
-* Reading and writing files
+* [Looping and iteration]({filename}/pages/04-looping_iteration.md)
+* [Reading and writing files]({filename}/pages/05-file_io.md)
+* [Control statements]({filename}/pages/06-control_statements_functions.md)
+
+
+Part 3: Projects
+----------------
+* [Projects!]({filename}/pages/07-exercises.md)
