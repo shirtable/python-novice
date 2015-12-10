@@ -7,7 +7,6 @@ One of the best things about computers is that you can instruct them to perform 
 Concepts
 --------
 * `for` loop
-* `while` loop
 * Indentation and code blocks in Python
 
 
