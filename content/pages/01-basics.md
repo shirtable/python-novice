@@ -6,13 +6,13 @@ In this lesson we will learn some very basic functionality of python.
 Concepts
 --------
 * Human-computer interaction via `print` command
-* Entering python commands into the interpreter shell (or ipython notebook)
+* Entering python commands into the Jupyter notebook
 * Variables
 * Code comments
 
 
 Hello world!
-------------
+============
 The first thing we will do is write a very simple program to print the message "Hello world!" to the screen. This program is so simple in Python it requires just a single line:
 
 ```python
@@ -44,7 +44,7 @@ Its important to note that when we tell the Python interpreter to execute code, 
 
 
 Variables
----------
+=========
 A key concept in any type of programming is the idea of a varaible. A variable is a reference to some data. Up to this point we have not been using variables, we have been using literal values of strings and numbers. For example, we've seen the literal string `"Hello world"` and the integers `2`, `4`, `6`, and `8`. With variables we can abstract functionality from literal values. 
 
 Lets look at some examples using the baby name data. We can use the data.gov browser to preview the data, but we can only get the first 1000 lines. This file isn't too big (6.1M), but it contains 295,194 lines.

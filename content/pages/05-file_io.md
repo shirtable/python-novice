@@ -11,7 +11,7 @@ Concepts
 
 
 Reading data from a file
-------------------------
+========================
 Up to this point we've been transferring data from the baby name data to Python by copy/pasting by hand. This baby name data file is over 6MB; copying everything by hand clearly is not the way to load this data into memory. Here's the preferred way to open this file and read its contents:
 
 
@@ -48,7 +48,7 @@ Finally, lets examine what's in the code block. We are calling the `readlines` m
 
 
 Writing data to a file
-----------------------
+======================
 What if we wanted to extract the baby data from just the year 2011 and write it to another file? There's an easy way to do this analysis that we'll examine in the next lesson, but for now I've examined this baby data and found that the data for the year 2011 starts on line 120460 and ends on line 179044 of the file. With this information we can take a slice from the `baby_data` list and write it to a file.
 
 

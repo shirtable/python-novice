@@ -5,20 +5,18 @@ save_as: index.html
 
 The goal of this workshop is to take people with very little to no programming experience to the point of understanding the basics of programming in the Python language. By the end of this class you will have written some programs and will have been exposed to the following concepts:
 
-* typeness
-    * strings
-    * numbers
+* strings
+* numbers
+* containers
     * lists, tuples
     * dictionaries
-* loading data from a file (csv, JSON)
-* writing data to a file (csv, JSON)
+* loading data from a file
+* writing data to a file
 * functions
-* errors and exceptions
 * control statments (if, etc.)
 * loops
 * visualization
 * importing modules and libraries
-* the OOP nature of python
 
 
 What is programming?
@@ -36,6 +34,19 @@ I like this definition because it captures the interaction between all of the en
 * Manipulate (verb): The computer manipulates the data on behalf of the human.
 
 Programming and software development are not necessarily the same things. Software development is humans collaborating on building software. Write your code to be read and understood by humans. Even if you are the only developer, you should think of yourself six months from now (and six months ago) as your collaborator.
+
+
+Why python?
+===========
+
+
+Jupyter notebook
+================
+* Create `shirtable` directory on desktop
+* Download baby data (from `python-novice` repo, not data.gov)
+* Fire up jupyter
+* Examine baby data (`wc -l`, `head`, etc.)
+* Rename notebook from "Untitled" to "Shirtable workshop"
 
 
 The problem: Most popular CA baby names, 2009-2013

@@ -7,12 +7,11 @@ One of the best things about computers is that you can instruct them to perform 
 Concepts
 --------
 * `for` loop
-* `while` loop
 * Indentation and code blocks in Python
 
 
 The Python `for` loop
----------------------
+=====================
 One of the most basic types of Python loop is the `for` loop. In this loop, Python executes some code for each item in a container. Lets consider the first five baby names in the baby name list.
 
 ```python
