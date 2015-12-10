@@ -12,7 +12,7 @@ Concepts
 
 Making a decision: the `if` statement
 =====================================
-In the last example, we wrote the 2011 baby data to a file based on the fact I told you that lines (VALUE) to (VALUE) were the 2011 data. Can't the computer do this kind of thing for us? Using an `if` statement, it can.
+In the last example, we wrote the 2011 baby data to a file based on the fact I told you that lines 120460 to 179044 were the 2011 data. Can't the computer do this kind of thing for us? Using an `if` statement, it can.
 
 Lets rework that last example by creating a variable called `babies_2011` that contains a list of the baby data from 2011.
 
