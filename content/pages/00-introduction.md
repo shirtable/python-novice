@@ -51,7 +51,7 @@ Jupyter notebook
 
 The problem: Most popular CA baby names, 2009-2013
 ==================================================
-The US government publishes several data sets at data.gov; an interesting one is [the most popular baby names in California from 2009 to 2013](http://catalog.data.gov/dataset/most-popular-baby-names-2009-2013). You should navigate to the site. You should also [download the csv file](https://cdph.data.ca.gov/api/views/9h3n-g3p4/rows.csv?accessType=DOWNLOAD) of the data so that you can do the exercises in this lesson.
+The US government publishes several data sets at data.gov; an interesting one is [the most popular baby names in California from 2009 to 2013](http://catalog.data.gov/dataset/most-popular-baby-names-2009-2013). You should navigate to the site. You should also [download the csv file](https://raw.githubusercontent.com/shirtable/python-novice/b8e2d961a4ee6adc6a3911b6326191105af3a7f8/dat/Most_Popular_Baby_Names__2009-2013.csv) of the data so that you can do the exercises in this lesson.
 
 Some questions we could answer using this data set:
 
