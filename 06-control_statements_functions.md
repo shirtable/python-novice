@@ -21,10 +21,23 @@ babies_2011 = []
 
 for baby_datum in baby_data:
     if baby_datum.startswith("2011"):
-        babies_2011.append(baby)
+        babies_2011.append(baby_datum)
 ```
 
 Using the `elif` statement, we can select from more than a single choice. Lets say we wanted to create lists of the 2011 babies *and* the 2012 names. The example is nearly identical.
+
+```python
+babies_2011 = []
+babies_2012 = []
+
+for baby_datum in baby_data:
+    if baby_datum.startswith("2011"):
+        babies_2011.append(baby_datum)
+    elif baby_datum.startswith("2012"):
+        babies_2012.append(baby_datum)
+```
+
+What if we wanted to collect all of the lines that weren't from 2011 or 2012? We use the `else` statement at the end of a Python `if` sequence:
 
 ```python
 babies_2011 = []
@@ -33,14 +46,14 @@ babies_other = []
 
 for baby_datum in baby_data:
     if baby_datum.startswith("2011"):
-        babies_2011.append(baby)
+        babies_2011.append(baby_datum)
     elif baby_datum.startswith("2012"):
-        babies_2012.append(baby)
+        babies_2012.append(baby_datum)
     else:
         babies_other.append(baby_datum)
 ```
 
-One other addition to this example is the `else` statement. You can put it at the end of an `if` statement to catch any case that wasn't listed in the `if`, `elif` conditions.
+There's no condition associated with the `else` statement since it corresponds to "everything else."
 
 
 Functions
