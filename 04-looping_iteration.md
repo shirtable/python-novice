@@ -50,7 +50,22 @@ for item in baby_entry:
 
 So executing a `for` loop over a dictionary simply iterates over the keys of the dictionary in arbitrary order (because there's no order to a Python dictionary).
 
-Lets look at one more example. One way of structuring the baby name data would be as a list of dictionaries. In fact, this structure is generally pretty useful and can be found in many cases. (NOTE: We should have an example where we structure this data in this way.)
+
+Example: using the list of dicts
+--------------------------------
+Lets redo the above examples but using our list dicts of babies. This approach is nice because the baby data is in a format that makes access easy.
+
+```python
+# Reset the counter
+total_baby_numbers = 0
+
+for baby in babies:
+    total_baby_numbers = total_baby_numbers + baby["count"]
+
+print total_baby_numbers
+>>> 15470
+```
+
 
 
 Indentation
