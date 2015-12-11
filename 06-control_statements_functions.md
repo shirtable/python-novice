@@ -58,7 +58,7 @@ There's no condition associated with the `else` statement since it corresponds t
 
 Functions
 ---------
-We could write conditions for any of the years in which babies were born using `if` statements, but this approach quickly gets tedious. By writing a function, we can abstract this functionality to simply ask for the year and get the corresponding entries.
+We could write conditions for any of the years in which babies were born using `if` statements, but this approach quickly gets tedious -- what if we had baby name data for all years between 1900 and 2013? By writing a function, we can abstract this functionality to simply ask for the year and get the corresponding entries.
 
 ```python
 def filter_year(baby_data, year):
@@ -81,6 +81,8 @@ To create a function, we start with the `def` keyword followed by the function c
 The overall structure of the function definition should look familiar: we terminate the function call signature using a colon, and we include the function's code within an indented code block. The code for this function is almost identical to what we wrote before, we've just abstracted some of the functionality with the variables that were passed to the function.
 
 You will note that immediately following the function call signature there's some text enclosed by three double-quote characters (`"""`). This text is very special in python and is called the "docstring." Python programmers use docstrings to document the functionality of their functions. This text is not like a comment; Python actually carries the docstring around with the function. We can access docstrings from the ipython-notebook using the magic `?` following the function name.
+
+(Demonstrate example of the `filter_year` function).
 
 Also note the `return` statement at the bottom of the function. This statement tells python to return the specified data back to whoever called it and exit. Your function does not need a `return` statement, but you won't get any data out if you don't have it.
 
