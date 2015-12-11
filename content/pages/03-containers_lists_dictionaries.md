@@ -268,3 +268,5 @@ What's the name of the first (not zeroth) entry in the list?
 print babies[1]["name"]
 >>> ANTHONY
 ```
+
+**DO NOT FORGET TO SAVE YOUR JUPYTER NOTEBOOK!!** We will use some of the data in the next lessons.
