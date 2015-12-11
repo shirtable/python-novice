@@ -183,13 +183,19 @@ Consider the first entry corresponding to the name "DANIEL". We can collect all 
 
 ```python
 baby = {"year": 2009, "gender": "male", "name": "DANIEL", "count": 3423}
+print baby
+>>> {'count': 3423, 'gender': ' male', 'name': 'DANIEL', 'year': 2009}
 ```
+
+Note that the order in which Python prints the `baby` dictionary is not the same as the order in which we entered the data. **This is how Python does dictionaries.** The data is there, but Python won't guarantee any particular order.
 
 To access the data in this dictionary, just call for it by name:
 
 ```python
 print baby["name"]
 >>> DANIEL
+print baby["count"]
+>>> 3423
 ```
 
 We can modify the data in the dictionary if we want. Say we wanted to modify `baby` to contain the data for the second most popular name.
@@ -217,4 +223,48 @@ Tuples are created using parantheses instead of square brackets:
 tup = (1, 2, 3)
 print tup
 >>> (1, 2, 3)
+```
+
+
+Exercise
+========
+Create a list of dictionaries containing the first five entries of the baby name data using dicts similar to the previous example.
+
+
+Solution
+--------
+```python
+b0 = {"year": 2009,
+    "gender": "male",
+    "name": "DANIEL",
+    "count": 3423,}
+
+b1 = {"year": 2009,
+    "gender": "male",
+    "name": "ANTHONY",
+    "count": 3106,}
+
+b2 = {"year": 2009,
+    "gender": "male",
+    "name": "ANGEL",
+    "count": 3058,}
+
+b3 = {"year": 2009,
+    "gender": "male",
+    "name": "JACOB",
+    "count": 2978,}
+
+b4 = {"year": 2009,
+    "gender": "male",
+    "name": "ALEXANDER",
+    "count": 2905,}
+
+babies = [b0, b1, b2, b3, b4]
+```
+
+What's the name of the first (not zeroth) entry in the list?
+
+```python
+print babies[1]["name"]
+>>> ANTHONY
 ```
