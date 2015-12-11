@@ -5,7 +5,7 @@ In this lesson we are going to look more closely at strings and numbers in Pytho
 
 
 Concepts
-========
+--------
 * Strings
 * Numbers (int, float)
 * Type
@@ -18,7 +18,7 @@ So far we've seen what happens when we `print` strings, but strings have much mo
 
 
 Print multiple strings
-======================
+----------------------
 ```python
 beginning = "2"
 end = "Chainz"
@@ -27,7 +27,7 @@ print beginning, end
 ```
 
 Combine (concatenate) strings
-=============================
+-----------------------------
 ```python
 rapper = beginning + end
 print rapper
@@ -46,7 +46,7 @@ So you see that the `rapper` variable is made up of the string from `beginning`,
 
 
 Some string functionality
-=========================
+-------------------------
 ```python
 # Print all uppercase string.
 print rapper.upper()
