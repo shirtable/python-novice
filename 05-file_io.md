@@ -16,11 +16,18 @@ Up to this point we've been transferring data from the baby name data to Python 
 
 
 ```python
-with open("dat/Most_Popular_Baby_Names__2009-2013.csv", "r") as f:
+with open("Most_Popular_Baby_Names__2009-2013.csv", "r") as f:
     baby_data = f.readlines()
 ```
 
-Before we get into the details of the `open` statement, lets see how many lines there are in this file.
+Before we get into the details of the `open` statement, lets see what we created for the `baby_data` variable.
+
+```python
+type(baby_data)
+>>> list
+```
+
+So its a list. How long is it?
 
 ```python
 print len(baby_data)
@@ -29,14 +36,7 @@ print len(baby_data)
 
 295,193. That's a lot!
 
-Lets take a look at the first few elements of the `baby_data` list variable.
-
-```python
-print baby_data[:10]
->>> ['YEAR,GENDER,NAME,COUNT\n', '2009,MALE,DANIEL,3423\n', '2009,MALE,ANTHONY,3106\n', '2009,MALE,ANGEL,3058\n', '2009,MALE,JACOB,2978\n', '2009,MALE,ALEXANDER,2905\n', '2009,MALE,ETHAN,2687\n', '2009,MALE,DAVID,2648\n', '2009,MALE,ANDREW,2605\n', '2009,MALE,MATTHEW,2435\n']
-```
-
-We can see that each element of the list contains what's found in each line of the file.
+So it looks like the `readlines` function creates a list of every line in a file (which is exactly what it does).
 
 There's a lot going on with reading data from files, so lets take each component one at a time.
 
@@ -47,15 +47,41 @@ Second, consider the overall construction; we are using the `with` keyword to op
 Finally, lets examine what's in the code block. We are calling the `readlines` method on the file object. This method reads all the lines and returns a list, where each line in the file corresponds to an item in the list. We are assigning that list to the variable `baby_data`.
 
 
+Cleaning up
+-----------
+Lets take a look at the first few elements of the `baby_data` list variable.
+
+```python
+print baby_data[:10]
+>>> ['YEAR,GENDER,NAME,COUNT\n', '2009,MALE,DANIEL,3423\n', '2009,MALE,ANTHONY,3106\n', '2009,MALE,ANGEL,3058\n', '2009,MALE,JACOB,2978\n', '2009,MALE,ALEXANDER,2905\n', '2009,MALE,ETHAN,2687\n', '2009,MALE,DAVID,2648\n', '2009,MALE,ANDREW,2605\n', '2009,MALE,MATTHEW,2435\n']
+```
+
+Each line has `\n` at the end of it. The `\n` is the "newline" character which indicates a new line. It makes sense that each line has a newline at the end of it, but we don't want this character in our data. We can use a `for` loop and the string `strip` method to get rid of it.
+
+```python
+# Initialize list into which all data will go
+baby_data = []
+
+with open("Most_Popular_Baby_Names__2009-2013.csv", "r") as f:
+    for line in f:
+        baby_data.append(line.strip())
+
+# Now take a look at the first few lines
+print baby_data[:10]
+>>> ['YEAR,GENDER,NAME,COUNT', '2009,MALE,DANIEL,3423', '2009,MALE,ANTHONY,3106', '2009,MALE,ANGEL,3058', '2009,MALE,JACOB,2978', '2009,MALE,ALEXANDER,2905', '2009,MALE,ETHAN,2687', '2009,MALE,DAVID,2648', '2009,MALE,ANDREW,2605', '2009,MALE,MATTHEW,2435']
+```
+
+In this example, we have two code blocks: one for the `with` statement and the other associated with the `for` loop. We opened the file using the `with` statement and then iterated over all of the lines of the file using the `for` loop. For each line, we `strip`ped off the whitespace, including the newline character. We appeneded these stripped lines to a list.
+
+
 Writing data to a file
 ======================
-What if we wanted to extract the baby data from just the year 2011 and write it to another file? There's an easy way to do this analysis that we'll examine in the next lesson, but for now I've examined this baby data and found that the data for the year 2011 starts on line 120460 and ends on line 179044 of the file. With this information we can take a slice from the `baby_data` list and write it to a file.
+What if we wanted to extract the baby data from just the year 2011 and write it to another file? There's an easy way to do this analysis that we'll examine in the next lesson, but for now I've examined this baby data and found that the data for the year 2011 starts on line 120460 and ends on line 179044 of the file. With this information we can take a slice from the `baby_data` list and write it to a file. Lets start with the simplest possible example: just writing the column information to the new file:
 
 
 ```python
 with open("2011_baby_data.csv", "w") as f:
     f.write(baby_data[0])
-    f.write(baby_data[START:END])
 ```
 
 The construction to write data to a file is, not surprisingly, similar to reading data from a file. Lets examine the differences.
@@ -64,7 +90,18 @@ First, we open the file for writing by passing `"w"` to the `open` command. Next
 
 Lets check the file to see what's been written.
 
-(OPEN THE FILE IN A TEXT EDITOR AND CHECK IT OUT.)
+(Open the file in the Jupyter notebook and check it out).
+
+Now lets write the rest of the data to the file. In order to successfuly perform this write, we will need to iterate over the slice of `baby_data` and write one line at a time to the file.
+
+```python
+start_line = 120460
+end_line = 179044
+
+with open("2011_baby_data.csv", "w") as f:
+    for line in baby_data[start_line:end_line]:
+        f.write(line + "\n") # Spoiler! we need newlines in the file.
+```
 
 
 Pitfalls
