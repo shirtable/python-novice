@@ -183,13 +183,19 @@ Consider the first entry corresponding to the name "DANIEL". We can collect all 
 
 ```python
 baby = {"year": 2009, "gender": "male", "name": "DANIEL", "count": 3423}
+print baby
+>>> {'count': 3423, 'gender': ' male', 'name': 'DANIEL', 'year': 2009}
 ```
+
+Note that the order in which Python prints the `baby` dictionary is not the same as the order in which we entered the data. **This is how Python does dictionaries.** The data is there, but Python won't guarantee any particular order.
 
 To access the data in this dictionary, just call for it by name:
 
 ```python
 print baby["name"]
 >>> DANIEL
+print baby["count"]
+>>> 3423
 ```
 
 We can modify the data in the dictionary if we want. Say we wanted to modify `baby` to contain the data for the second most popular name.
