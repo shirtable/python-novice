@@ -41,15 +41,6 @@ Why python?
 Python is a very popular language that's easy to learn. Since its so popular, there's a lot of code already available to do what you probably want to do. Addiitonally, the community is very welcoming to new pythonistas.
 
 
-Jupyter notebook
-================
-* Create `shirtable` directory on desktop
-* Download baby data (from `python-novice` repo, not data.gov)
-* Fire up jupyter
-* Examine baby data (`wc -l`, `head`, etc.)
-* Rename notebook from "Untitled" to "Shirtable workshop"
-
-
 The problem: Most popular CA baby names, 2009-2013
 ==================================================
 The US government publishes several data sets at data.gov; an interesting one is [the most popular baby names in California from 2009 to 2013](http://catalog.data.gov/dataset/most-popular-baby-names-2009-2013). You should navigate to the site. You should also [download the csv file](https://raw.githubusercontent.com/shirtable/python-novice/b8e2d961a4ee6adc6a3911b6326191105af3a7f8/dat/Most_Popular_Baby_Names__2009-2013.csv) of the data so that you can do the exercises in this lesson.

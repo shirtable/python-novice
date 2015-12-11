@@ -5,10 +5,20 @@ In this lesson we will learn some very basic functionality of python.
 
 Concepts
 --------
+* Jupyter notebook
 * Human-computer interaction via `print` command
 * Entering python commands into the Jupyter notebook
 * Variables
 * Code comments
+
+
+Jupyter notebook
+================
+* Create `shirtable` directory on desktop
+* [Download baby data](https://raw.githubusercontent.com/shirtable/python-novice/b8e2d961a4ee6adc6a3911b6326191105af3a7f8/dat/Most_Popular_Baby_Names__2009-2013.csv)
+* Fire up jupyter
+* Rename notebook from "Untitled" to "Shirtable workshop"
+
 
 
 Hello world!
