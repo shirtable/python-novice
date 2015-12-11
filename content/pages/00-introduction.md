@@ -38,15 +38,7 @@ Programming and software development are not necessarily the same things. Softwa
 
 Why python?
 ===========
-
-
-Jupyter notebook
-================
-* Create `shirtable` directory on desktop
-* Download baby data (from `python-novice` repo, not data.gov)
-* Fire up jupyter
-* Examine baby data (`wc -l`, `head`, etc.)
-* Rename notebook from "Untitled" to "Shirtable workshop"
+Python is a very popular language that's easy to learn. Since its so popular, there's a lot of code already available to do what you probably want to do. Addiitonally, the community is very welcoming to new pythonistas.
 
 
 The problem: Most popular CA baby names, 2009-2013
