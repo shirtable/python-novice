@@ -38,6 +38,7 @@ Programming and software development are not necessarily the same things. Softwa
 
 Why python?
 ===========
+Python is a very popular language that's easy to learn. Since its so popular, there's a lot of code already available to do what you probably want to do. Addiitonally, the community is very welcoming to new pythonistas.
 
 
 Jupyter notebook
