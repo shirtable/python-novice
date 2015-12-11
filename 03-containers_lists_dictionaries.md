@@ -1,7 +1,7 @@
 Title: Containers: lists and dictionaries
 Category: Lessons
 
-Up to this point, we've encountered data types that hold only one piece of data. Python has several data types which can be thought of as containers of several data types. We will cover three:
+Up to this point, we've encountered data types that hold only one piece of data. Python has several data types which can be thought of as containers of other data types. We will cover three:
 
 * lists
 * tuples
@@ -16,6 +16,7 @@ Concepts
     * Key features
     * Retrieving data
     * Some useful list operations
+    * Revisit string functionality
 * Dicts
     * Key features
     * Setting and retrieving data
@@ -24,10 +25,24 @@ Concepts
 
 Lists
 =====
-Lists are a Python container data type who's key feature is ordering the items they contain. Lets take a look at the baby name data. This data set is comprised of four columns: year, gender, name, and count. This data is ordered first by year (oldest to newest), then by count. We can construct a list of the five most popular male baby names from 2009:
+Lists are a Python container data type who's key feature is ordering the items they contain. Lets take a look at the baby name data.
+
+(execute in the Jupyter notebook to see the first 20 lines of the baby name data).
+
+```
+!head -n 20 Most_Popular_Baby_Names__2009-2013.csv
+```
+
+This data set is comprised of four columns: year, gender, name, and count. This data is ordered first by year (oldest to newest), then by count. We can construct a list of the five most popular male baby names from 2009:
 
 ```python
 popular_names = ["DANIEL", "ANTHONY", "ANGEL", "JACOB", "ALEXANDR"]
+print popular_names
+```
+
+How do we access individual items in the list?
+
+```
 popular_names[0]
 >>> "DANIEL"
 popular_names[2]
@@ -49,10 +64,10 @@ We can also take a part of the list; in Python parlance, a sub-list is called a 
 print popular_names[:2]
 >>> ["DANIEL", "ANTHONY"]
 
-print fruit[2:]
+print popular_names[2:]
 >>> ["JACOB", "ALEXANDR"]
 
-print fruit[1:3]
+print popular_names[1:3]
 >>> ["ANTHONY", "ANGEL"]
 ```
 
@@ -105,13 +120,54 @@ print top_names
 >>> ['DANIEL', 'ANTHONY', 'ANGEL', 'JACOB', 'ALEXANDR', 'ETHAN', 'DAVID', 'ANDREW', 'MATTHEW', 'JOSHUA', 'CHRISTOPHER']
 ```
 
-There are two things to note at this point: First, take a moment to consider the types of problems for which the combination of ordering items, combining lists using the `+` operator, and adding items to the back of a list might be useful.
+Note that when we called the `append` method, we performed an in-place modification. In other words, there was no assignment of a new variable; `append` changed the `top_names` data "in-place".
 
-Second, note that when we called the `append` method, we performed an in-place modification. In other words, there was no assignment of a new variable; `append` changed the `top_names` data "in-place".
+Take a moment to reflect on the types of problems for which list functionality might be useful: ordering items, combining lists using the `+` operator, and appending items to the back of a list.
+
+(Have students name some functionality. If a dict might be more useful, say that there's an even better data structure and we'll get to it in just a moment.)
 
 
 Strings revisited!
-------------------
+==================
+There are many cases where data might be contained in a string, but a list would be a better representation, or vice-versa. Now that we've discussed lists, lets revisit strings to see some functionality for switching between the two.
+
+
+`split`
+-------
+Consider the first line of the `Most_Popular_Baby_Names__2009-2013.csv` file; it is a string containing a comma-delimited list of column names. How would we convert this string into a list where each column name is an element?
+
+We use the the string's `split` method.
+
+```
+column_names_line = "YEAR,GENDER,NAME,COUNT"
+column_names = column_names_line.split(",")
+print column_names
+>>> ['YEAR', 'GENDER', 'NAME', 'COUNT']
+```
+
+With no arguments, the `split` method will split a string along any whitespace.
+
+```
+example_str = "this string is         to be     used as an example"
+example_lst = exmpl_str.split()
+print example_lst
+>>> ['this', 'string', 'is', 'to', 'be', 'used', 'as', 'an', 'example']
+```
+
+So by using a string's `split` method we can create a list from a string.
+
+
+`join`
+------
+What if we have a list of items and we want to construct a string? We use the `join` method of the string. Lets say we want to reconstruct the `column_names_line` string from the `column_names` list.
+
+```
+recreated_column_names_line = ",".join(column_names)
+print recreated_column_names_line
+>>> YEAR,GENDER,NAME,COUNT
+```
+
+The syntax might seem a little weird, but take a close look at it. We are simply using the literal string `","` and calling its `join` method. We are passing a list to the `join` method, and the `join` method is pasting together a string of all of the items of the list separated by commas.
 
 
 Common pitfalls: use the right tool for the job
