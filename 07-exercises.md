@@ -21,6 +21,8 @@ Example problems
 ----------------
 The first exercise might be too tough for everyone to complete by themselves. We should walk through it, but the solution should be driven by suggestions from the class.
 
+The students probably have enough information to complete subsequent exercises.
+
 1. Create a function that reads the data from the file and create a list of dictionaries.
 2. Determine the number of babies born in 2012.
 3. Determine the number of female babies born in 2012.
