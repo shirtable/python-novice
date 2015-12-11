@@ -41,7 +41,7 @@ Part 2: Flow
 ------------
 * [Looping and iteration]({filename}/pages/04-looping_iteration.md)
 * [Reading and writing files]({filename}/pages/05-file_io.md)
-* [Control statements]({filename}/pages/06-control_statements_functions.md)
+* [Control statements and functions]({filename}/pages/06-control_statements_functions.md)
 
 
 Part 3: Projects
