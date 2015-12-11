@@ -110,8 +110,12 @@ There are two things to note at this point: First, take a moment to consider the
 Second, note that when we called the `append` method, we performed an in-place modification. In other words, there was no assignment of a new variable; `append` changed the `top_names` data "in-place".
 
 
+Strings revisited!
+------------------
+
+
 Common pitfalls: use the right tool for the job
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------
 As mentioned previously, the key feature of a list is ordering items. This feature is great because there are a number of scenarios for which order is exactly what is needed. However, there are also a large number of scenarios for which data needs to be collected together, but there isn't an obvious order. If you find yourself writing code where you are placing items in a list and have to remember their place later, a list probably isn't the data structure you need -- you probably need a dictionary.
 
 
@@ -143,7 +147,7 @@ print baby
 
 
 Dictionary key restrictions: mutable vs. immutable
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------
 You'll notice that we used strings as keys in the dictionary above. Python allows any *immutable* data type as a dictionary key. Immutable simply means that the data can't be changed once its set. Strings are immutable while lists are not. Dictionaries are also mutable. Its worth mentioning this concept but not belaboring it; for the most part you will use strings as the dictionary key.
 
 
