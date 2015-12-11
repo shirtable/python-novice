@@ -104,6 +104,20 @@ with open("2011_baby_data.csv", "w") as f:
 ```
 
 
+Alternative: `join` command
+---------------------------
+Instead of using the `for` loop, we could just construct the string we want using the `join` method and write the string to a file.
+
+```python
+data_2011 = "\n".join(baby_data[start_line:end_line])
+
+with open("2011_baby_data.csv", "w") as f:
+    f.write(data_2011)
+```
+
+(Perhaps go through ways to screw it up).
+
+
 Pitfalls
 --------
 * Data has to be text in order to be written to files.
