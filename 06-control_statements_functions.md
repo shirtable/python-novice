@@ -86,6 +86,35 @@ You will note that immediately following the function call signature there's som
 
 Also note the `return` statement at the bottom of the function. This statement tells python to return the specified data back to whoever called it and exit. Your function does not need a `return` statement, but you won't get any data out if you don't have it.
 
+
+Better example: list of dicts
+-----------------------------
+Lets face it, the function above could be a lot better. Here we are constrained by the quality of our data: we are dealing with a list of strings instead of a list of dicts. On the other hand, we have the toy data `babies` which is a list of dicts containing five baby names and associated information. Lets write a more general function that can filter this data on any field.
+
+```python
+def filter_babies(babies, key, value):
+    """
+    Return baby data where key matches the value
+    """
+    filtered_babies = []
+    for baby in babies:
+        if baby[key] = value:
+            filtered_babies.append(baby)
+
+    return baby
+```
+
+This new function allows us to filter on any of the keys of the baby dict. The following demos won't be super interesting because of the limited amount of data we have, but hopefully you will see the value in this function over the prior function.
+
+```python
+# Find all babies born in 2011
+babies_2011 = filter_babies(babies, "year", 2011)
+
+# Find all entries with name ALEXSANDER
+babies_alexandar = filter_babies(babies, "name", "ALEXANDAR")
+```
+
+
 One final thing that's important to talk about is data scope. The variables you create in a code block stay within that code block. Once the block ends, the data disappears unless it is `return`ed.
 
 NEED TO TALK ABOUT GLOBAL VARIABLES HERE.
