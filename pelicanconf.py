@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Joshua Ryan Smith'
 SITENAME = u'Shirtable novice Python workshop'
-SITEURL = ''
+SITEURL = 'http://shirtable.github.io/python-novice'
 
 PATH = 'content'
 
