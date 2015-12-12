@@ -30,6 +30,12 @@ Python is a very popular language that's easy to learn. Since its so popular, th
 
 Structure
 =========
+This workshop is intended to be interactive. Your instructors will be keying examples into their computers for you to see, and you are expected to follow along. If you get stuck, please place a red sticky note on your laptop and the instructor who isn't teaching will assist you. Feel free to ask questions at any point, and feel free to help your neighbors.
+
+The lessons in this workshop will start as more tutorial: during the beginnign of the day the instructors will talk more and demonstrate examples with which you can follow along. As the day progresses, the instructors will transition to facilitating input from the class in order to work the example problems.
+
+Please don't just copy/paste code, key it in to see what results you are getting.
+
 Part 1: Data
 ------------
 * [Basics]({filename}/pages/01-basics.md)
