@@ -25,7 +25,7 @@ Concepts
 
 Lists
 =====
-Lists are a Python container data type who's key feature is ordering the items they contain. Lets take a look at the baby name data.
+Lists are a Python container data type whose key feature is ordering the items they contain. Let's take a look at the baby name data.
 
 (execute in the Jupyter notebook to see the first 20 lines of the baby name data).
 
@@ -129,7 +129,7 @@ Take a moment to reflect on the types of problems for which list functionality m
 
 Strings revisited!
 ==================
-There are many cases where data might be contained in a string, but a list would be a better representation, or vice-versa. Now that we've discussed lists, lets revisit strings to see some functionality for switching between the two.
+There are many cases where data might be contained in a string, but a list would be a better representation, or vice-versa. Now that we've discussed lists, let's revisit strings to see some functionality for switching between the two.
 
 
 `split`
@@ -159,7 +159,7 @@ So by using a string's `split` method we can create a list from a string.
 
 `join`
 ------
-What if we have a list of items and we want to construct a string? We use the `join` method of the string. Lets say we want to reconstruct the `column_names_line` string from the `column_names` list.
+What if we have a list of items and we want to construct a string? We use the `join` method of the string. Let's say we want to reconstruct the `column_names_line` string from the `column_names` list.
 
 ```
 recreated_column_names_line = ",".join(column_names)
