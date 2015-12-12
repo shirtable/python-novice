@@ -56,7 +56,7 @@ print 4 / 2
 >>> 2
 ```
 
-Great! Python can do simple arithmatic as well as print text to the screen.
+Great! Python can do simple arithmetic as well as print text to the screen.
 
 Its worth noting that there are two steps to what we are doing:
 
@@ -68,9 +68,9 @@ Its important to note that when we tell the Python interpreter to execute code, 
 
 Variables
 =========
-A key concept in any type of programming is the idea of a varaible. A variable is a reference to some data. Up to this point we have not been using variables, we have been using literal values of strings and numbers. For example, we've seen the literal string `"Hello world"` and the integers `2`, `4`, `6`, and `8`. With variables we can abstract functionality from literal values. 
+A key concept in any type of programming is the idea of a variable. A variable is a reference to some data. Up to this point we have not been using variables, we have been using literal values of strings and numbers. For example, we've seen the literal string `"Hello world"` and the integers `2`, `4`, `6`, and `8`. With variables we can abstract functionality from literal values. 
 
-Lets look at some examples using the baby name data. We can use the data.gov browser to preview the data, but we can only get the first 1000 lines. This file isn't too big (6.1M), but it contains 295,194 lines.
+Let's look at some examples using the baby name data. We can use the data.gov browser to preview the data, but we can only get the first 1000 lines. This file isn't too big (6.1M), but it contains 295,194 lines.
 
 ```python
 first_baby_name = "Daniel"
@@ -156,9 +156,9 @@ wont-work = "nope."
 
 Comments
 --------
-Comments are text in code, but which isn't executed by the Python interpreter. Comments begin with the `#` character (pound, not hashtag). As soon as the Python interpreter encouters the comment character on a line, it ignores the rest of the line. Comments are a great way to document your code as well as temporarily switch off certain lines from executing.
+Comments are text in code, but which isn't executed by the Python interpreter. Comments begin with the `#` character (pound, not hashtag). As soon as the Python interpreter encounters the comment character on a line, it ignores the rest of the line. Comments are a great way to document your code as well as temporarily switch off certain lines from executing.
 
 
 Conclusion
 ==========
-We have demonstrated some basic functionality of Python by interacting with the Python interpreter via the jupyter notebook and `print` statements. We've also encountered variables.
+We have demonstrated some basic functionality of Python by interacting with the Python interpreter via the Jupyter notebook and `print` statements. We've also encountered variables.

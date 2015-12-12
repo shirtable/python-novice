@@ -1,7 +1,7 @@
 Title: Strings, numbers, and typeness
 Category: Lessons
 
-In this lesson we are going to look more closely at strings and numbers in Python. In so doing we are going to encounter the concept of "type." We will also encounter Python's conception of object=oriented programming.
+In this lesson we are going to look more closely at strings and numbers in Python. In so doing we are going to encounter the concept of "type." We will also encounter Python's conception of object-oriented programming.
 
 
 Concepts
@@ -180,7 +180,7 @@ print int_hbt
 
 We just went through a number of examples and there's no need for you to memorize all of this stuff. The general principle is "type". Type, like variables, is a fundamental idea in programming. Every kind of data has a particular type. So far, we've seen three: `str`, `int`, and `float`. In certain cases, data of one type can be converted to another.
 
-The idea of type brings us to another idea this is fundamental to Python in particular, but not necessarily other programming lanugages: the idea of object=orientation. There's a lot that can be said about OOP, but the most important things to understand are:
+The idea of type brings us to another idea this is fundamental to Python in particular, but not necessarily other programming languages: the idea of object-orientation. There's a lot that can be said about OOP, but the most important things to understand are:
 
 * An object combines data with functionality.
 * Everything in Python is an object. Everything.
@@ -201,7 +201,7 @@ print jrs.lower()
 >>> joshua ryan smith
 ```
 
-The variable `jrs` contains the string `"Joshua Ryan Smith"`. Since `jrs` is a string, it comes with some built=in functionality; two examples are the `upper` and `lower` methods which return the string in all uppercase and all lowercase, respectively. The names of all of the functionality of an object can be seen using the `dir` function.
+The variable `jrs` contains the string `"Joshua Ryan Smith"`. Since `jrs` is a string, it comes with some built-in functionality; two examples are the `upper` and `lower` methods which return the string in all uppercase and all lowercase, respectively. The names of all of the functionality of an object can be seen using the `dir` function.
 
 ```python
 dir(jrs)
@@ -280,7 +280,7 @@ dir(jrs)
 
 In fact, the functionality to combine strings using `+` is listed if you know where to look; its the `__add__` method. This method is specially named so that the python interpreter knows to call it when it sees `+` combining two strings.
 
-We aren't going to give examples of all this functionality, but you are encouraged to read [Python's excellent documentation]() if you are interested in learning more.
+We aren't going to give examples of all this functionality, but you are encouraged to read [Python's excellent documentation](https://docs.python.org/2/) if you are interested in learning more.
 
 
 Conclusion

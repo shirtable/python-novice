@@ -71,7 +71,7 @@ print baby_data[:10]
 >>> ['YEAR,GENDER,NAME,COUNT', '2009,MALE,DANIEL,3423', '2009,MALE,ANTHONY,3106', '2009,MALE,ANGEL,3058', '2009,MALE,JACOB,2978', '2009,MALE,ALEXANDER,2905', '2009,MALE,ETHAN,2687', '2009,MALE,DAVID,2648', '2009,MALE,ANDREW,2605', '2009,MALE,MATTHEW,2435']
 ```
 
-In this example, we have two code blocks: one for the `with` statement and the other associated with the `for` loop. We opened the file using the `with` statement and then iterated over all of the lines of the file using the `for` loop. For each line, we `strip`ped off the whitespace, including the newline character. We appeneded these stripped lines to a list.
+In this example, we have two code blocks: one for the `with` statement and the other associated with the `for` loop. We opened the file using the `with` statement and then iterated over all of the lines of the file using the `for` loop. For each line, we `strip`ped off the whitespace, including the newline character. We appended these stripped lines to a list.
 
 
 Writing data to a file
@@ -92,7 +92,7 @@ Lets check the file to see what's been written.
 
 (Open the file in the Jupyter notebook and check it out).
 
-Now lets write the rest of the data to the file. In order to successfuly perform this write, we will need to iterate over the slice of `baby_data` and write one line at a time to the file.
+Now lets write the rest of the data to the file. In order to successfully perform this write, we will need to iterate over the slice of `baby_data` and write one line at a time to the file.
 
 ```python
 start_line = 120460

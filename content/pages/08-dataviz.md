@@ -40,7 +40,7 @@ Next, we need to initialize the matplotlib environment in the Jupyter notebook.
 %matplotlib inline
 ```
 
-This command is a Jupyter command and *not* a general Python command. It is simply to tell the Jupyter notebook to render the plots inside the notebook instead of popping open a new window contaning the plot.
+This command is a Jupyter command and *not* a general Python command. It is simply to tell the Jupyter notebook to render the plots inside the notebook instead of popping open a new window containing the plot.
 
 Next, lets plot the data.
 

@@ -1,7 +1,7 @@
 Title: Controlling program flow and functions
 Category: Lessons
 
-Oftentimes, your program will have to execute different behaviors depending on some condition. In this lesson, we will learn about `if` statemments to perform different actions depending on what year the babies were born.
+Oftentimes, your program will have to execute different behaviors depending on some condition. In this lesson, we will learn about `if` statements to perform different actions depending on what year the babies were born.
 
 
 Concepts
