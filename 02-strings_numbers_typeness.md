@@ -280,7 +280,7 @@ dir(jrs)
 
 In fact, the functionality to combine strings using `+` is listed if you know where to look; its the `__add__` method. This method is specially named so that the python interpreter knows to call it when it sees `+` combining two strings.
 
-We aren't going to give examples of all this functionality, but you are encouraged to read [Python's excellent documentation]() if you are interested in learning more.
+We aren't going to give examples of all this functionality, but you are encouraged to read [Python's excellent documentation](https://docs.python.org/2/) if you are interested in learning more.
 
 
 Conclusion
