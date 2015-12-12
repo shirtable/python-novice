@@ -47,3 +47,4 @@ Part 2: Flow
 Part 3: Projects
 ----------------
 * [Projects!]({filename}/pages/07-exercises.md)
+* [Data visualization]({filename}/pages/08-dataviz.md)
