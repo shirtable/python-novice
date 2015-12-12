@@ -45,7 +45,17 @@ This command is a Jupyter command and *not* a general Python command. It is simp
 Next, lets plot the data.
 
 ```python
-import matplotlib.pyplot as plt
+from matplotlib import pyplot
 
-plt.plot(years, babies_per_year)
+pyplot.plot(years, babies_per_year)
 ```
+
+The one thing we haven't encountered in the above example is the `import` statement. The `matplotlib` module is installed on our system as a result of our installing Anaconda. This module contains all of the code needed to create plots. This `import` statement tells Python to import the `matplotlib` code into our environment so that we can use it. More specifically, we are importing just the `pyplot` submodule from the `matplotlib` module.
+
+
+Exercises
+=========
+* Plot the number of female babies per year.
+* Plot the number of male babies per year.
+* Plot the number of babies for which gender is not recorded.
+* Plot the ratio of male to female babies.
