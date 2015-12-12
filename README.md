@@ -6,8 +6,8 @@ Building HTML
 To build and view the HTML built from the lesson source, follow these steps:
 
 ```
-# install pelican
-$ pip install pelican
+# install pelican and markdown
+$ pip install pelican markdown
 
 # build
 $ make html
