@@ -61,10 +61,23 @@ babies = []
 for baby_line in baby_lines:
     baby_dat = baby_line.split(",")
 
-    baby = {"year": baby_dat[0],
-        "gender": baby_dat[1],
-        "name": baby_dat[2],
-        "count": baby_dat[3]}
+    # Everything is coming in as a string so we have to make the
+    # numbers numbers if we want to do numerical things.
+
+    # Also, some of the names include a `", JR"` substring that we have 
+    # to handle. Yikes.
+
+    if len(baby_dat) == 5:
+        name = baby_dat[2] + baby_dat[3]
+        baby = {"year": int(baby_dat[0]),
+            "gender": baby_dat[1],
+            "name": name,
+            "count": int(baby_dat[-1])}
+    else:
+        baby = {"year": int(baby_dat[0]),
+            "gender": baby_dat[1],
+            "name": baby_dat[2],
+            "count": int(baby_dat[3])}
 
     babies.append(baby)
 ```
