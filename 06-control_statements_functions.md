@@ -101,7 +101,7 @@ def filter_babies(babies, key, value):
         if baby[key] = value:
             filtered_babies.append(baby)
 
-    return baby
+    return filtered_baby
 ```
 
 This new function allows us to filter on any of the keys of the baby dict. The following demos won't be super interesting because of the limited amount of data we have, but hopefully you will see the value in this function over the prior function.
