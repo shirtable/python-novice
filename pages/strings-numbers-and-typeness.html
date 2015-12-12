@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Strings, numbers, and typeness</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Strings, numbers, and typeness</h1>
+    
+    <p>In this lesson we are going to look more closely at strings and numbers in Python. In so doing we are going to encounter the concept of "type." We will also encounter Python's conception of object-oriented programming.</p>
+<h2>Concepts</h2>
+<ul>
+<li>Strings</li>
+<li>Numbers (int, float)</li>
+<li>Type</li>
+<li>Python and Object=Oriented Programming (OOP)</li>
+</ul>
+<h1>Strings</h1>
+<p>So far we've seen what happens when we <code>print</code> strings, but strings have much more functionality.</p>
+<h2>Print multiple strings</h2>
+<div class="highlight"><pre><span class="n">beginning</span> <span class="o">=</span> <span class="s">&quot;2&quot;</span>
+<span class="n">end</span> <span class="o">=</span> <span class="s">&quot;Chainz&quot;</span>
+<span class="k">print</span> <span class="n">beginning</span><span class="p">,</span> <span class="n">end</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="n">Chainz</span>
+</pre></div>
+
+
+<h2>Combine (concatenate) strings</h2>
+<div class="highlight"><pre><span class="n">rapper</span> <span class="o">=</span> <span class="n">beginning</span> <span class="o">+</span> <span class="n">end</span>
+<span class="k">print</span> <span class="n">rapper</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="n">Chainz</span>
+</pre></div>
+
+
+<p>Note that there's no space between <code>2</code> and <code>Chainz</code>. When combining strings as shown above, Python simply sticks the beginning of the second string to the end of the first string. To get a space, you would have to explicitly add it.</p>
+<div class="highlight"><pre><span class="n">rapper</span> <span class="o">=</span> <span class="n">beginning</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">end</span>
+<span class="k">print</span> <span class="n">rapper</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="n">Chainz</span>
+</pre></div>
+
+
+<p>So you see that the <code>rapper</code> variable is made up of the string from <code>beginning</code>, a string containing a single space character, and the string from <code>end</code>.</p>
+<h2>Some string functionality</h2>
+<div class="highlight"><pre><span class="c"># Print all uppercase string.</span>
+<span class="k">print</span> <span class="n">rapper</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="n">CHAINZ</span>
+
+<span class="c"># Print all lowercase string.</span>
+<span class="k">print</span> <span class="n">rapper</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="n">chainz</span>
+
+<span class="c"># Count the number of characters in the string.</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">rapper</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span>
+</pre></div>
+
+
+<h1>Numbers</h1>
+<p>Python understands several different kinds of numbers; the two most common are integers (<code>int</code>) and floating=point (<code>float</code>). You can think of these as integers and decimals. There are good computer science reasons why these two kinds of numbers are distinct.</p>
+<div class="highlight"><pre><span class="n">i</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">f_1</span> <span class="o">=</span> <span class="mf">12.27</span>
+<span class="n">f_2</span> <span class="o">=</span> <span class="mf">12.</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">f_1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">f_2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span>
+</pre></div>
+
+
+<p>All kinds of mathematical operations are available on numbers: addition, subtraction, multiplication, division, etc.</p>
+<h1>Type</h1>
+<p>We've learned that we can combine two strings with the <code>+</code> operator, and that we can add two numbers (either int and/or floats) with the same <code>+</code> operator. What happens if we try to create 2 Chaniz's name with an int and string?</p>
+<div class="highlight"><pre><span class="n">beginning</span> <span class="o">=</span> <span class="s">&quot;2&quot;</span>
+<span class="n">dos</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">end</span> <span class="o">=</span> <span class="s">&quot;Chainz&quot;</span>
+
+<span class="c"># We did this before and it should work</span>
+<span class="n">rapper</span> <span class="o">=</span> <span class="n">beginning</span> <span class="o">+</span> <span class="n">end</span>
+<span class="k">print</span> <span class="n">rapper</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="n">Chainz</span>
+
+<span class="c"># Now try with an int</span>
+<span class="n">rapper</span> <span class="o">=</span> <span class="n">dos</span> <span class="o">+</span> <span class="n">end</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s">&#39;int&#39;</span> <span class="ow">and</span> <span class="s">&#39;str&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>Why did the first thing work?</li>
+<li>Why did the second thing fail?</li>
+</ul>
+<p>In order to handle data, computers have to be very explicit about what exactly the data is. The Python interpreter knows how to store and operate on data based on what kind of data it is, i.e. its "type." So far we've encountered <em>three</em> types of data:</p>
+<ul>
+<li>string</li>
+<li>int</li>
+<li>float</li>
+</ul>
+<p>Its clear why strings and numbers would be different types. Its probably not immediately clear why integers and floats are different types, but just know that, again, there are good computer science reasons that aren't relevant to the task at hand (having partially to do with memory allocation and representation).</p>
+<p>Sometimes we can change the type.</p>
+<div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="n">dos</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span>
+
+<span class="n">str_dos</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dos</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">str_dos</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span>
+
+<span class="k">print</span> <span class="n">str_dos</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span>
+
+<span class="n">rapper</span> <span class="o">=</span> <span class="n">str_dos</span> <span class="o">+</span> <span class="n">end</span>
+<span class="k">print</span> <span class="n">rapper</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="n">Chainz</span>
+
+<span class="c"># The following also works and is slightly more concise</span>
+<span class="n">rapper</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dos</span><span class="p">)</span> <span class="o">+</span> <span class="n">end</span>
+<span class="k">print</span> <span class="n">rapper</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="n">Chainz</span>
+
+<span class="c"># floats can also be converted to strings</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="n">str_pi</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">str_pi</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span>
+</pre></div>
+
+
+<p>We are able to convert ints and floats to strings because there's an unambiguous way to represent each as strings. In certain cases, we can convert strings to floats or ints.</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="n">beginning</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">beginning</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span>
+
+<span class="n">int_beginning</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">beginning</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">int_beginning</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span>
+
+<span class="n">fl_beginning</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">beginning</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fl_beginning</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span>
+
+<span class="n">str_human_body_temp</span> <span class="o">=</span> <span class="s">&quot;98.6&quot;</span>
+
+<span class="n">fl_hbt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">str_human_body_temp</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fl_hbt</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span>
+
+<span class="n">int_hbt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">str_human_body_temp</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s">&#39;98.6&#39;</span>
+
+<span class="c"># What about converting a float to an int?</span>
+<span class="n">int_hbt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fl_hbt</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">int_hbt</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span>
+<span class="k">print</span> <span class="n">int_hbt</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">98</span>
+</pre></div>
+
+
+<p>We just went through a number of examples and there's no need for you to memorize all of this stuff. The general principle is "type". Type, like variables, is a fundamental idea in programming. Every kind of data has a particular type. So far, we've seen three: <code>str</code>, <code>int</code>, and <code>float</code>. In certain cases, data of one type can be converted to another.</p>
+<p>The idea of type brings us to another idea this is fundamental to Python in particular, but not necessarily other programming languages: the idea of object-orientation. There's a lot that can be said about OOP, but the most important things to understand are:</p>
+<ul>
+<li>An object combines data with functionality.</li>
+<li>Everything in Python is an object. Everything.</li>
+</ul>
+<p>Object orientation is a large, complex, and sometimes controversial topic and we aren't going to belabor it here. Many Python teachers would avoid it all together because at this stage in your programming life there's not much practical use. However, it is an underlying principle of the language and some aspects of Python seem bizarre without understanding Python's object orientation.</p>
+<p>We've already seen some examples of the first point when we were dealing with strings:</p>
+<div class="highlight"><pre><span class="n">jrs</span> <span class="o">=</span> <span class="s">&quot;Joshua Ryan Smith&quot;</span>
+<span class="k">print</span> <span class="n">jrs</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Joshua</span> <span class="n">Ryan</span> <span class="n">Smith</span>
+
+<span class="k">print</span> <span class="n">jrs</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">JOSHUA</span> <span class="n">RYAN</span> <span class="n">SMITH</span>
+
+<span class="k">print</span> <span class="n">jrs</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">joshua</span> <span class="n">ryan</span> <span class="n">smith</span>
+</pre></div>
+
+
+<p>The variable <code>jrs</code> contains the string <code>"Joshua Ryan Smith"</code>. Since <code>jrs</code> is a string, it comes with some built-in functionality; two examples are the <code>upper</code> and <code>lower</code> methods which return the string in all uppercase and all lowercase, respectively. The names of all of the functionality of an object can be seen using the <code>dir</code> function.</p>
+<div class="highlight"><pre><span class="nb">dir</span><span class="p">(</span><span class="n">jrs</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&#39;__add__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__class__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__contains__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__delattr__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__doc__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__eq__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__format__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__ge__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__getattribute__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__getitem__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__getnewargs__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__getslice__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__gt__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__hash__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__init__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__le__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__len__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__lt__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__mod__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__mul__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__ne__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__new__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__reduce__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__reduce_ex__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__repr__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__rmod__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__rmul__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__setattr__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__sizeof__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__str__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;__subclasshook__&#39;</span><span class="p">,</span>
+ <span class="s">&#39;_formatter_field_name_split&#39;</span><span class="p">,</span>
+ <span class="s">&#39;_formatter_parser&#39;</span><span class="p">,</span>
+ <span class="s">&#39;capitalize&#39;</span><span class="p">,</span>
+ <span class="s">&#39;center&#39;</span><span class="p">,</span>
+ <span class="s">&#39;count&#39;</span><span class="p">,</span>
+ <span class="s">&#39;decode&#39;</span><span class="p">,</span>
+ <span class="s">&#39;encode&#39;</span><span class="p">,</span>
+ <span class="s">&#39;endswith&#39;</span><span class="p">,</span>
+ <span class="s">&#39;expandtabs&#39;</span><span class="p">,</span>
+ <span class="s">&#39;find&#39;</span><span class="p">,</span>
+ <span class="s">&#39;format&#39;</span><span class="p">,</span>
+ <span class="s">&#39;index&#39;</span><span class="p">,</span>
+ <span class="s">&#39;isalnum&#39;</span><span class="p">,</span>
+ <span class="s">&#39;isalpha&#39;</span><span class="p">,</span>
+ <span class="s">&#39;isdigit&#39;</span><span class="p">,</span>
+ <span class="s">&#39;islower&#39;</span><span class="p">,</span>
+ <span class="s">&#39;isspace&#39;</span><span class="p">,</span>
+ <span class="s">&#39;istitle&#39;</span><span class="p">,</span>
+ <span class="s">&#39;isupper&#39;</span><span class="p">,</span>
+ <span class="s">&#39;join&#39;</span><span class="p">,</span>
+ <span class="s">&#39;ljust&#39;</span><span class="p">,</span>
+ <span class="s">&#39;lower&#39;</span><span class="p">,</span>
+ <span class="s">&#39;lstrip&#39;</span><span class="p">,</span>
+ <span class="s">&#39;partition&#39;</span><span class="p">,</span>
+ <span class="s">&#39;replace&#39;</span><span class="p">,</span>
+ <span class="s">&#39;rfind&#39;</span><span class="p">,</span>
+ <span class="s">&#39;rindex&#39;</span><span class="p">,</span>
+ <span class="s">&#39;rjust&#39;</span><span class="p">,</span>
+ <span class="s">&#39;rpartition&#39;</span><span class="p">,</span>
+ <span class="s">&#39;rsplit&#39;</span><span class="p">,</span>
+ <span class="s">&#39;rstrip&#39;</span><span class="p">,</span>
+ <span class="s">&#39;split&#39;</span><span class="p">,</span>
+ <span class="s">&#39;splitlines&#39;</span><span class="p">,</span>
+ <span class="s">&#39;startswith&#39;</span><span class="p">,</span>
+ <span class="s">&#39;strip&#39;</span><span class="p">,</span>
+ <span class="s">&#39;swapcase&#39;</span><span class="p">,</span>
+ <span class="s">&#39;title&#39;</span><span class="p">,</span>
+ <span class="s">&#39;translate&#39;</span><span class="p">,</span>
+ <span class="s">&#39;upper&#39;</span><span class="p">,</span>
+ <span class="s">&#39;zfill&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>In fact, the functionality to combine strings using <code>+</code> is listed if you know where to look; its the <code>__add__</code> method. This method is specially named so that the python interpreter knows to call it when it sees <code>+</code> combining two strings.</p>
+<p>We aren't going to give examples of all this functionality, but you are encouraged to read <a href="https://docs.python.org/2/">Python's excellent documentation</a> if you are interested in learning more.</p>
+<h1>Conclusion</h1>
+<p>In this lesson, we explored strings and numbers. We saw some of the functionality of strings. We encountered the concept of "type" and how type can be changed. Finally, we mentioned the OOP nature of Python and how object orientation figures into type.</p>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

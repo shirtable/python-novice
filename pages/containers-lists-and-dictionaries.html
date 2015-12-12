@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Containers: lists and dictionaries</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Containers: lists and dictionaries</h1>
+    
+    <p>Up to this point, we've encountered data types that hold only one piece of data. Python has several data types which can be thought of as containers of other data types. We will cover three:</p>
+<ul>
+<li>lists</li>
+<li>tuples</li>
+<li>dictionaries</li>
+</ul>
+<p>In this lesson, we are going to simply demo some of the features of lists, then we will use what we've learned to build some functionality to analyze baby names. The key thing to know is that lists' key feature is ordering items (i.e. first item, second item, third item, etc.) whereas dictionaries' key feature is labeling items.</p>
+<h2>Concepts</h2>
+<ul>
+<li>Lists and tuples:<ul>
+<li>Key features</li>
+<li>Retrieving data</li>
+<li>Some useful list operations</li>
+<li>Revisit string functionality</li>
+</ul>
+</li>
+<li>Dicts<ul>
+<li>Key features</li>
+<li>Setting and retrieving data</li>
+</ul>
+</li>
+<li>Immutable data types</li>
+</ul>
+<h1>Lists</h1>
+<p>Lists are a Python container data type whose key feature is ordering the items they contain. Let's take a look at the baby name data.</p>
+<p>(execute in the Jupyter notebook to see the first 20 lines of the baby name data).</p>
+<div class="highlight"><pre><span class="sx">!head -n 20 Most_Popular_Baby_Names__2009-2013.csv</span>
+</pre></div>
+
+
+<p>This data set is comprised of four columns: year, gender, name, and count. This data is ordered first by year (oldest to newest), then by count. We can construct a list of the five most popular male baby names from 2009:</p>
+<div class="highlight"><pre><span class="n">popular_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;DANIEL&quot;</span><span class="p">,</span> <span class="s">&quot;ANTHONY&quot;</span><span class="p">,</span> <span class="s">&quot;ANGEL&quot;</span><span class="p">,</span> <span class="s">&quot;JACOB&quot;</span><span class="p">,</span> <span class="s">&quot;ALEXANDR&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">popular_names</span>
+</pre></div>
+
+
+<p>How do we access individual items in the list?</p>
+<div class="highlight"><pre>popular_names[0]
+&gt;&gt;&gt; &quot;DANIEL&quot;
+popular_names[2]
+&gt;&gt;&gt; &quot;ANGEL&quot;
+</pre></div>
+
+
+<p>An important thing to note is that the indexing of a python list starts at 0 instead of 1.</p>
+<p>We can also index items from the back of the list:</p>
+<div class="highlight"><pre><span class="n">popular_names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;ALEXANDR&quot;</span>
+</pre></div>
+
+
+<p>We can also take a part of the list; in Python parlance, a sub-list is called a "slice."</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="n">popular_names</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&quot;DANIEL&quot;</span><span class="p">,</span> <span class="s">&quot;ANTHONY&quot;</span><span class="p">]</span>
+
+<span class="k">print</span> <span class="n">popular_names</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&quot;JACOB&quot;</span><span class="p">,</span> <span class="s">&quot;ALEXANDR&quot;</span><span class="p">]</span>
+
+<span class="k">print</span> <span class="n">popular_names</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&quot;ANTHONY&quot;</span><span class="p">,</span> <span class="s">&quot;ANGEL&quot;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Lists can contain data of different types.</p>
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;one&quot;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;one&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Lists with zero elements can be created, and lists can contain other lists (which contain other lists, which contain other lists... with lists all the way down).</p>
+<div class="highlight"><pre><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_o_lists</span> <span class="o">=</span> <span class="p">[</span><span class="n">empty_list</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">,</span> <span class="n">empty_list</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">list_o_lists</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[[],</span> <span class="s">&#39;three&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="mf">7.3</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Lists are a good container object, but their real power is that a list's elements can be changed after its been created, and elements can be added to and removed from an existing list.</p>
+<p>Notice that we misspelled "ALEXANDER" when we created this list. We can fix that mistake by reassigning the last element of the list.</p>
+<div class="highlight"><pre><span class="n">popular_names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;ALEXANDER&quot;</span>
+<span class="k">print</span> <span class="n">popular_names</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&#39;DANIEL&#39;</span><span class="p">,</span> <span class="s">&#39;ANTHONY&#39;</span><span class="p">,</span> <span class="s">&#39;ANGEL&#39;</span><span class="p">,</span> <span class="s">&#39;JACOB&#39;</span><span class="p">,</span> <span class="s">&#39;ALEXANDER&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>We can also create a list of the next five most popular male baby names in 2009:</p>
+<div class="highlight"><pre><span class="n">less_popular_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;ETHAN&quot;</span><span class="p">,</span> <span class="s">&quot;DAVID&quot;</span><span class="p">,</span> <span class="s">&quot;ANDREW&quot;</span><span class="p">,</span> <span class="s">&quot;MATTHEW&quot;</span><span class="p">,</span> <span class="s">&quot;JOSHUA&quot;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Lets paste the two lists, <code>popular_names</code> and <code>less_popular_names</code> together to make a list of the top ten most popular baby names. Accomplishing this task is simple: use the <code>+</code> operator:</p>
+<div class="highlight"><pre><span class="n">top_names</span> <span class="o">=</span> <span class="n">popular_names</span> <span class="o">+</span> <span class="n">less_popular_names</span>
+<span class="k">print</span> <span class="n">top_names</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&#39;DANIEL&#39;</span><span class="p">,</span> <span class="s">&#39;ANTHONY&#39;</span><span class="p">,</span> <span class="s">&#39;ANGEL&#39;</span><span class="p">,</span> <span class="s">&#39;JACOB&#39;</span><span class="p">,</span> <span class="s">&#39;ALEXANDR&#39;</span><span class="p">,</span> <span class="s">&#39;ETHAN&#39;</span><span class="p">,</span> <span class="s">&#39;DAVID&#39;</span><span class="p">,</span> <span class="s">&#39;ANDREW&#39;</span><span class="p">,</span> <span class="s">&#39;MATTHEW&#39;</span><span class="p">,</span> <span class="s">&#39;JOSHUA&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>What if we wanted to append the 11th most popular name to the end of the list? We could use the <code>append</code> list method:</p>
+<div class="highlight"><pre><span class="n">top_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;CHRISTOPHER&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">top_names</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&#39;DANIEL&#39;</span><span class="p">,</span> <span class="s">&#39;ANTHONY&#39;</span><span class="p">,</span> <span class="s">&#39;ANGEL&#39;</span><span class="p">,</span> <span class="s">&#39;JACOB&#39;</span><span class="p">,</span> <span class="s">&#39;ALEXANDR&#39;</span><span class="p">,</span> <span class="s">&#39;ETHAN&#39;</span><span class="p">,</span> <span class="s">&#39;DAVID&#39;</span><span class="p">,</span> <span class="s">&#39;ANDREW&#39;</span><span class="p">,</span> <span class="s">&#39;MATTHEW&#39;</span><span class="p">,</span> <span class="s">&#39;JOSHUA&#39;</span><span class="p">,</span> <span class="s">&#39;CHRISTOPHER&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Note that when we called the <code>append</code> method, we performed an in-place modification. In other words, there was no assignment of a new variable; <code>append</code> changed the <code>top_names</code> data "in-place".</p>
+<p>Take a moment to reflect on the types of problems for which list functionality might be useful: ordering items, combining lists using the <code>+</code> operator, and appending items to the back of a list.</p>
+<p>(Have students name some functionality. If a dict might be more useful, say that there's an even better data structure and we'll get to it in just a moment.)</p>
+<h1>Strings revisited!</h1>
+<p>There are many cases where data might be contained in a string, but a list would be a better representation, or vice-versa. Now that we've discussed lists, let's revisit strings to see some functionality for switching between the two.</p>
+<h2><code>split</code></h2>
+<p>Consider the first line of the <code>Most_Popular_Baby_Names__2009-2013.csv</code> file; it is a string containing a comma-delimited list of column names. How would we convert this string into a list where each column name is an element?</p>
+<p>We use the the string's <code>split</code> method.</p>
+<div class="highlight"><pre>column_names_line = &quot;YEAR,GENDER,NAME,COUNT&quot;
+column_names = column_names_line.split(&quot;,&quot;)
+print column_names
+&gt;&gt;&gt; [&#39;YEAR&#39;, &#39;GENDER&#39;, &#39;NAME&#39;, &#39;COUNT&#39;]
+</pre></div>
+
+
+<p>With no arguments, the <code>split</code> method will split a string along any whitespace.</p>
+<div class="highlight"><pre>example_str = &quot;this string is         to be     used as an example&quot;
+example_lst = exmpl_str.split()
+print example_lst
+&gt;&gt;&gt; [&#39;this&#39;, &#39;string&#39;, &#39;is&#39;, &#39;to&#39;, &#39;be&#39;, &#39;used&#39;, &#39;as&#39;, &#39;an&#39;, &#39;example&#39;]
+</pre></div>
+
+
+<p>So by using a string's <code>split</code> method we can create a list from a string.</p>
+<h2><code>join</code></h2>
+<p>What if we have a list of items and we want to construct a string? We use the <code>join</code> method of the string. Let's say we want to reconstruct the <code>column_names_line</code> string from the <code>column_names</code> list.</p>
+<div class="highlight"><pre>recreated_column_names_line = &quot;,&quot;.join(column_names)
+print recreated_column_names_line
+&gt;&gt;&gt; YEAR,GENDER,NAME,COUNT
+</pre></div>
+
+
+<p>The syntax might seem a little weird, but take a close look at it. We are simply using the literal string <code>","</code> and calling its <code>join</code> method. We are passing a list to the <code>join</code> method, and the <code>join</code> method is pasting together a string of all of the items of the list separated by commas.</p>
+<h2>Common pitfalls: use the right tool for the job</h2>
+<p>As mentioned previously, the key feature of a list is ordering items. This feature is great because there are a number of scenarios for which order is exactly what is needed. However, there are also a large number of scenarios for which data needs to be collected together, but there isn't an obvious order. If you find yourself writing code where you are placing items in a list and have to remember their place later, a list probably isn't the data structure you need -- you probably need a dictionary.</p>
+<h1>Dictionaries</h1>
+<p>The key feature of a Python dictionary is labeling items in the collection. Take a look at the baby name data: it is comprised of four columns. There's no order to this data, and so it doesn't make sense trying to force an arbitrary order. Instead, we could just use a Python dictionary to access each datum using its label (called a "key" in Python parlance).</p>
+<p>Consider the first entry corresponding to the name "DANIEL". We can collect all the associated data together in a dictionary like so:</p>
+<div class="highlight"><pre><span class="n">baby</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">,</span> <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;DANIEL&quot;</span><span class="p">,</span> <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3423</span><span class="p">}</span>
+<span class="k">print</span> <span class="n">baby</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s">&#39;count&#39;</span><span class="p">:</span> <span class="mi">3423</span><span class="p">,</span> <span class="s">&#39;gender&#39;</span><span class="p">:</span> <span class="s">&#39; male&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;DANIEL&#39;</span><span class="p">,</span> <span class="s">&#39;year&#39;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Note that the order in which Python prints the <code>baby</code> dictionary is not the same as the order in which we entered the data. <strong>This is how Python does dictionaries.</strong> The data is there, but Python won't guarantee any particular order.</p>
+<p>To access the data in this dictionary, just call for it by name:</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="n">baby</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">DANIEL</span>
+<span class="k">print</span> <span class="n">baby</span><span class="p">[</span><span class="s">&quot;count&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3423</span>
+</pre></div>
+
+
+<p>We can modify the data in the dictionary if we want. Say we wanted to modify <code>baby</code> to contain the data for the second most popular name.</p>
+<div class="highlight"><pre><span class="n">baby</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;ANTHONY&quot;</span>
+<span class="n">baby</span><span class="p">[</span><span class="s">&quot;count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3106</span>
+<span class="k">print</span> <span class="n">baby</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s">&#39;count&#39;</span><span class="p">:</span> <span class="mi">3106</span><span class="p">,</span> <span class="s">&#39;gender&#39;</span><span class="p">:</span> <span class="s">&#39;male&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;ANTHONY&#39;</span><span class="p">,</span> <span class="s">&#39;year&#39;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">}</span>
+</pre></div>
+
+
+<h2>Dictionary key restrictions: mutable vs. immutable</h2>
+<p>You'll notice that we used strings as keys in the dictionary above. Python allows any <em>immutable</em> data type as a dictionary key. Immutable simply means that the data can't be changed once its set. Strings are immutable while lists are not. Dictionaries are also mutable. Its worth mentioning this concept but not belaboring it; for the most part you will use strings as the dictionary key.</p>
+<h1>Tuples</h1>
+<p>We won't spend much time at all on tuples except to say they are an immutable list. Tuples have important uses, but we won't need them in this course. However, they appear often enough that you should be aware of their existence.</p>
+<p>Tuples are created using parentheses instead of square brackets:</p>
+<div class="highlight"><pre><span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">tup</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<h1>Exercise</h1>
+<p>Create a list of dictionaries containing the first five entries of the baby name data using dicts similar to the previous example.</p>
+<h2>Solution</h2>
+<div class="highlight"><pre><span class="n">b0</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">,</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;DANIEL&quot;</span><span class="p">,</span>
+    <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3423</span><span class="p">,}</span>
+
+<span class="n">b1</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">,</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;ANTHONY&quot;</span><span class="p">,</span>
+    <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3106</span><span class="p">,}</span>
+
+<span class="n">b2</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">,</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;ANGEL&quot;</span><span class="p">,</span>
+    <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="mi">3058</span><span class="p">,}</span>
+
+<span class="n">b3</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">,</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;JACOB&quot;</span><span class="p">,</span>
+    <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2978</span><span class="p">,}</span>
+
+<span class="n">b4</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">,</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;ALEXANDER&quot;</span><span class="p">,</span>
+    <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2905</span><span class="p">,}</span>
+
+<span class="n">babies</span> <span class="o">=</span> <span class="p">[</span><span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">]</span>
+</pre></div>
+
+
+<p>What's the name of the first (not zeroth) entry in the list?</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="n">babies</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&quot;name&quot;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ANTHONY</span>
+</pre></div>
+
+
+<p><strong>DO NOT FORGET TO SAVE YOUR JUPYTER NOTEBOOK!!</strong> We will use some of the data in the next lessons.</p>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

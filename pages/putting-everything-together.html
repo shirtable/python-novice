@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Putting everything together</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Putting everything together</h1>
+    
+    <p>At this point, we've covered many topics including:</p>
+<ul>
+<li>variables</li>
+<li>strings (and some string methods)</li>
+<li>numbers</li>
+<li>lists</li>
+<li>dictionaries</li>
+<li><code>for</code> loop</li>
+<li>Indentation and code blocks in Python</li>
+<li>reading/writing files</li>
+<li><code>if</code> statements</li>
+<li>functions</li>
+</ul>
+<p>We are going to spend the remainder of this workshop working through a few examples to deal with the baby name data and create a few visualizations.</p>
+<h2>Example problems</h2>
+<p>The first exercise might be too tough for everyone to complete by themselves. We should walk through it, but the solution should be driven by suggestions from the class.</p>
+<p>The students probably have enough information to complete subsequent exercises.</p>
+<ol>
+<li>Create a function that reads the data from the file and create a list of dictionaries.</li>
+<li>Determine the number of babies born in 2012.</li>
+<li>Determine the number of female babies born in 2012.</li>
+<li>Determine the number of female babies born in 2012 with a five-letter name.</li>
+<li>Determine the number of babies whos name starts with the letter "J".</li>
+<li>How many babies have four letter names?</li>
+<li>How many female babies have names that start with "L"?</li>
+<li>How many babies were born in 2010?</li>
+<li>What's the ratio of male babies to female babies in 2012?</li>
+<li>Determine the number of babies born each year (for data visualization in the next lesson).</li>
+</ol>
+<h2>Read data into list of dicts</h2>
+<div class="highlight"><pre><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;dat/Most_Popular_Baby_Names__2009-2013.csv&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+    <span class="c"># Just read the first line because we know its the column descriptions.</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="c"># Strip off any whitespace that might be lurking at the end.</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="c"># Read everything else into a string.</span>
+    <span class="n">dat</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c"># There is some whitespace lurking at the end of this string, so get rid of it.</span>
+    <span class="n">dat</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="n">col_names</span> <span class="o">=</span> <span class="n">cols</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">baby_lines</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="n">babies</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">baby_line</span> <span class="ow">in</span> <span class="n">baby_lines</span><span class="p">:</span>
+    <span class="n">baby_dat</span> <span class="o">=</span> <span class="n">baby_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="c"># Everything is coming in as a string so we have to make the</span>
+    <span class="c"># numbers numbers if we want to do numerical things.</span>
+
+    <span class="c"># Also, some of the names include a `&quot;, JR&quot;` substring that we have </span>
+    <span class="c"># to handle. Yikes.</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">baby_dat</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">baby_dat</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">baby_dat</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">baby</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">baby_dat</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="n">baby_dat</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">baby_dat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">baby</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">baby_dat</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="n">baby_dat</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="n">baby_dat</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s">&quot;count&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">baby_dat</span><span class="p">[</span><span class="mi">3</span><span class="p">])}</span>
+
+    <span class="n">babies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby</span><span class="p">)</span>
+</pre></div>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

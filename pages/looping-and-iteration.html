@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Looping and iteration</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Looping and iteration</h1>
+    
+    <p>One of the best things about computers is that you can instruct them to perform the same action over and over again. This repitition is commonly called "looping" and is more generally called "iteration." Iteration in Python is a fundamental building block of the language and is strongly tied to container data types.</p>
+<h2>Concepts</h2>
+<ul>
+<li><code>for</code> loop</li>
+<li>Indentation and code blocks in Python</li>
+</ul>
+<h1>The Python <code>for</code> loop</h1>
+<p>One of the most basic types of Python loop is the <code>for</code> loop. In this loop, Python executes some code for each item in a container. Lets consider the first five baby names in the baby name list.</p>
+<div class="highlight"><pre><span class="n">baby_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;DANIEL&quot;</span><span class="p">,</span> <span class="s">&quot;ANTHONY&quot;</span><span class="p">,</span> <span class="s">&quot;ANGEL&quot;</span><span class="p">,</span> <span class="s">&quot;JACOB&quot;</span><span class="p">,</span> <span class="s">&quot;ALEXANDER&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">baby_names</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">name</span>
+</pre></div>
+
+
+<p>The <code>for</code> loop above iterates over each item in the <code>baby_names</code> list. Each element of the list is printed. The loop terminates after it finishes with the last element of the list.</p>
+<p>The <code>for</code> loop above consists of two components: the <code>for</code> loop call and the <code>for</code> loop body. In order of appearance, the call consists of the <code>for</code> command, a variable used to store an element of the list, the <code>in</code> command and the list over which the iteration will be executed. The body consists of any arbitrary code. In this case, we are just printing the element of the list.</p>
+<p>Simply printing items in a list isn't terribly useful. We could use a <code>for</code> loop with a list to determine the total number of babies with the top five names.</p>
+<div class="highlight"><pre><span class="n">baby_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3423</span><span class="p">,</span> <span class="mi">3106</span><span class="p">,</span> <span class="mi">3058</span><span class="p">,</span> <span class="mi">2978</span><span class="p">,</span> <span class="mi">2905</span><span class="p">]</span>
+
+<span class="n">total_baby_numbers</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">baby_number</span> <span class="ow">in</span> <span class="n">baby_numbers</span><span class="p">:</span>
+    <span class="n">total_baby_numbers</span> <span class="o">=</span> <span class="n">total_baby_numbers</span> <span class="o">+</span> <span class="n">baby_number</span>
+
+<span class="k">print</span> <span class="n">total_baby_numbers</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">15470</span>
+</pre></div>
+
+
+<p>So far we've applied <code>for</code> loops to iterate over lists. Many other container types are iterable. Here's a slightly contrived example to demonstrate: consider a dictionary containing data corresponding to the first entry in the baby name data table.</p>
+<div class="highlight"><pre><span class="n">baby_entry</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2009</span><span class="p">,</span> <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;MALE&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;DANIEL&quot;</span><span class="p">,</span> <span class="s">&quot;count&quot;</span><span class="p">:</span>  <span class="mi">3423</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">baby_entry</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">item</span>
+</pre></div>
+
+
+<p>So executing a <code>for</code> loop over a dictionary simply iterates over the keys of the dictionary in arbitrary order (because there's no order to a Python dictionary).</p>
+<h2>Example: using the list of dicts</h2>
+<p>Lets redo the above examples but using our list dicts of babies. This approach is nice because the baby data is in a format that makes access easy.</p>
+<div class="highlight"><pre><span class="c"># Reset the counter</span>
+<span class="n">total_baby_numbers</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">baby</span> <span class="ow">in</span> <span class="n">babies</span><span class="p">:</span>
+    <span class="n">total_baby_numbers</span> <span class="o">=</span> <span class="n">total_baby_numbers</span> <span class="o">+</span> <span class="n">baby</span><span class="p">[</span><span class="s">&quot;count&quot;</span><span class="p">]</span>
+
+<span class="k">print</span> <span class="n">total_baby_numbers</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">15470</span>
+</pre></div>
+
+
+<h2>Indentation</h2>
+<p>Notice that the code block immediately following the <code>for</code> loop call is indented. This indentation serves two purposes. First, this indentation is how Python knows what is part of the body of the <code>for</code> loop: every line that is indented to the same extent is understood to be part of the <code>for</code> loop body. To write code after the <code>for</code> loop, simply write code with no indentation.</p>
+<p>The second purpose of indentation is to promote code readability. It turns out that writing code for a machine to read and execute is much easier than writing code for another person to read. You should also note that "another person" could mean you, six months from now. Indenting code makes the code much more readable than having all the lines at the same level of indentation.</p>
+<p>Another important aspect of indentation in Python is consistency. The Python interpreter does not care if you use spaces or tabs to indicate the body of a loop, nor does it care how many you use as long as you use the same number. People have determined that the convention is to use <strong>four</strong> space characters for an indentation. Please follow this convention and do not use tabs.</p>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

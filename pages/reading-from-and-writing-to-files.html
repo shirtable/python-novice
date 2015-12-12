@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Reading from and writing to files</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Reading from and writing to files</h1>
+    
+    <p>Oftentimes data is located in files and we need to be able to read it into a variable (or several variables). Conversely, data may be in variables and we want to write it to a file. This file I/O (input/output) is another fundamental principle of programming, and many operations in Python share this same pattern. We will explore reading data from and writing data to files in this lesson. Both operations will build on what we just learned about strings, lists, and iteration.</p>
+<h2>Concepts</h2>
+<ul>
+<li>Reading data from a file</li>
+<li>Writing data to a file</li>
+</ul>
+<h1>Reading data from a file</h1>
+<p>Up to this point we've been transferring data from the baby name data to Python by copy/pasting by hand. This baby name data file is over 6MB; copying everything by hand clearly is not the way to load this data into memory. Here's the preferred way to open this file and read its contents:</p>
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;Most_Popular_Baby_Names__2009-2013.csv&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">baby_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Before we get into the details of the <code>open</code> statement, lets see what we created for the <code>baby_data</code> variable.</p>
+<div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="n">baby_data</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span>
+</pre></div>
+
+
+<p>So its a list. How long is it?</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">baby_data</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">295193</span>
+</pre></div>
+
+
+<p>295,193. That's a lot!</p>
+<p>So it looks like the <code>readlines</code> function creates a list of every line in a file (which is exactly what it does).</p>
+<p>There's a lot going on with reading data from files, so lets take each component one at a time.</p>
+<p>First, the command to open a file is <code>open</code> and requires two arguments. The first argument is a string which indicates the file to open. In our case, that file is called <code>Most_Popular_Baby_Names__2009-2013.csv</code> and is located in the <code>dat</code> directory. Hence, <code>dat/Most_Popular_Baby_Names__2009-2013.csv</code>. The second argument tells Python how to open the file. We want to read from the file and so we pass "r" to the <code>open</code> function as the second argument.</p>
+<p>Second, consider the overall construction; we are using the <code>with</code> keyword to open the file, assign the opened file to the variable <code>f</code>, then use the corresponding code block to perform the operations on the file. The <code>with</code> code block offers us some protection from a common set of problems: when the code in the corresponding code block exits (as a result of finishing or even as a result of raising an exception) Python automatically closes the file. Otherwise, we would have to manually close the file. There are a number of problems that can occur in this scenario that result in a corrupted file and so its best to use the <code>with</code> construction.</p>
+<p>Finally, lets examine what's in the code block. We are calling the <code>readlines</code> method on the file object. This method reads all the lines and returns a list, where each line in the file corresponds to an item in the list. We are assigning that list to the variable <code>baby_data</code>.</p>
+<h2>Cleaning up</h2>
+<p>Lets take a look at the first few elements of the <code>baby_data</code> list variable.</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="n">baby_data</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&#39;YEAR,GENDER,NAME,COUNT</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,DANIEL,3423</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ANTHONY,3106</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ANGEL,3058</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,JACOB,2978</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ALEXANDER,2905</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ETHAN,2687</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,DAVID,2648</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ANDREW,2605</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,MATTHEW,2435</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Each line has <code>\n</code> at the end of it. The <code>\n</code> is the "newline" character which indicates a new line. It makes sense that each line has a newline at the end of it, but we don't want this character in our data. We can use a <code>for</code> loop and the string <code>strip</code> method to get rid of it.</p>
+<div class="highlight"><pre><span class="c"># Initialize list into which all data will go</span>
+<span class="n">baby_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;Most_Popular_Baby_Names__2009-2013.csv&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">baby_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="c"># Now take a look at the first few lines</span>
+<span class="k">print</span> <span class="n">baby_data</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">&#39;YEAR,GENDER,NAME,COUNT&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,DANIEL,3423&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ANTHONY,3106&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ANGEL,3058&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,JACOB,2978&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ALEXANDER,2905&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ETHAN,2687&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,DAVID,2648&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,ANDREW,2605&#39;</span><span class="p">,</span> <span class="s">&#39;2009,MALE,MATTHEW,2435&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>In this example, we have two code blocks: one for the <code>with</code> statement and the other associated with the <code>for</code> loop. We opened the file using the <code>with</code> statement and then iterated over all of the lines of the file using the <code>for</code> loop. For each line, we <code>strip</code>ped off the whitespace, including the newline character. We appended these stripped lines to a list.</p>
+<h1>Writing data to a file</h1>
+<p>What if we wanted to extract the baby data from just the year 2011 and write it to another file? There's an easy way to do this analysis that we'll examine in the next lesson, but for now I've examined this baby data and found that the data for the year 2011 starts on line 120460 and ends on line 179044 of the file. With this information we can take a slice from the <code>baby_data</code> list and write it to a file. Lets start with the simplest possible example: just writing the column information to the new file:</p>
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;2011_baby_data.csv&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">baby_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+
+<p>The construction to write data to a file is, not surprisingly, similar to reading data from a file. Lets examine the differences.</p>
+<p>First, we open the file for writing by passing <code>"w"</code> to the <code>open</code> command. Next, we use the file's <code>write</code> method to write data to the file.</p>
+<p>Lets check the file to see what's been written.</p>
+<p>(Open the file in the Jupyter notebook and check it out).</p>
+<p>Now lets write the rest of the data to the file. In order to successfully perform this write, we will need to iterate over the slice of <code>baby_data</code> and write one line at a time to the file.</p>
+<div class="highlight"><pre><span class="n">start_line</span> <span class="o">=</span> <span class="mi">120460</span>
+<span class="n">end_line</span> <span class="o">=</span> <span class="mi">179044</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;2011_baby_data.csv&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">baby_data</span><span class="p">[</span><span class="n">start_line</span><span class="p">:</span><span class="n">end_line</span><span class="p">]:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span> <span class="c"># Spoiler! we need newlines in the file.</span>
+</pre></div>
+
+
+<h2>Alternative: <code>join</code> command</h2>
+<p>Instead of using the <code>for</code> loop, we could just construct the string we want using the <code>join</code> method and write the string to a file.</p>
+<div class="highlight"><pre><span class="n">data_2011</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">baby_data</span><span class="p">[</span><span class="n">start_line</span><span class="p">:</span><span class="n">end_line</span><span class="p">])</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;2011_baby_data.csv&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data_2011</span><span class="p">)</span>
+</pre></div>
+
+
+<p>(Perhaps go through ways to screw it up).</p>
+<h2>Pitfalls</h2>
+<ul>
+<li>Data has to be text in order to be written to files.</li>
+<li>If you want a newline, you have to put a newline character.</li>
+</ul>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

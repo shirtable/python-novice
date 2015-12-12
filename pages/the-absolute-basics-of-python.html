@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>The absolute basics of python</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">The absolute basics of python</h1>
+    
+    <p>In this lesson we will learn some very basic functionality of python.</p>
+<h2>Concepts</h2>
+<ul>
+<li>Jupyter notebook</li>
+<li>Human-computer interaction via <code>print</code> command</li>
+<li>Entering python commands into the Jupyter notebook</li>
+<li>Variables</li>
+<li>Code comments</li>
+</ul>
+<h1>The problem: Most popular CA baby names, 2009-2013</h1>
+<p>The US government publishes several data sets at data.gov; an interesting one is <a href="http://catalog.data.gov/dataset/most-popular-baby-names-2009-2013">the most popular baby names in California from 2009 to 2013</a>. You should navigate to the site. You should also <a href="https://raw.githubusercontent.com/shirtable/python-novice/b8e2d961a4ee6adc6a3911b6326191105af3a7f8/dat/Most_Popular_Baby_Names__2009-2013.csv">download the csv file</a> of the data so that you can do the exercises in this lesson.</p>
+<p>Some questions we could answer using this data set:</p>
+<ul>
+<li>How many babies have four letter names?</li>
+<li>How many female babies have names that start with "L"?</li>
+<li>How many babies were born in 2010?</li>
+<li>What's the ratio of male babies to female babies in 2012?</li>
+</ul>
+<p>These are the kinds of questions that one could answer with Excel and a few hours, but we are going to address them using Python. We will start small, but then build on what we've learned throughout the day.</p>
+<h1>Jupyter notebook</h1>
+<ul>
+<li>Create <code>shirtable</code> directory on desktop</li>
+<li><a href="https://raw.githubusercontent.com/shirtable/python-novice/b8e2d961a4ee6adc6a3911b6326191105af3a7f8/dat/Most_Popular_Baby_Names__2009-2013.csv">Download baby data</a></li>
+<li>Fire up jupyter</li>
+<li>Rename notebook from "Untitled" to "Shirtable workshop"</li>
+</ul>
+<h1>Hello world!</h1>
+<p>The first thing we will do is write a very simple program to print the message "Hello world!" to the screen. This program is so simple in Python it requires just a single line:</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="s">&quot;Hello world!&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Hello</span> <span class="n">world</span><span class="err">!</span>
+</pre></div>
+
+
+<p>This example seems trivial, but in fact it exposes a number of concepts, the details of all of which we will explore during this workshop. First, we've demonstrated that we can write code that emits a message to the user. Your computer does this all the time. Second, we've called the <code>print</code> function; this function takes an argument and prints the argument to the user's screen. The argument we passed to <code>print</code> was the string <code>"Hello world"</code>.</p>
+<p>Lets see if we can print other things.</p>
+<div class="highlight"><pre><span class="k">print</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">6</span>
+<span class="k">print</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span>
+<span class="k">print</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span>
+</pre></div>
+
+
+<p>Great! Python can do simple arithmetic as well as print text to the screen.</p>
+<p>Its worth noting that there are two steps to what we are doing:</p>
+<ol>
+<li>Typing code into the ipython notebook</li>
+<li>Executing the code</li>
+</ol>
+<p>Its important to note that when we tell the Python interpreter to execute code, Python reads each line from top to bottom and executes each.</p>
+<h1>Variables</h1>
+<p>A key concept in any type of programming is the idea of a variable. A variable is a reference to some data. Up to this point we have not been using variables, we have been using literal values of strings and numbers. For example, we've seen the literal string <code>"Hello world"</code> and the integers <code>2</code>, <code>4</code>, <code>6</code>, and <code>8</code>. With variables we can abstract functionality from literal values. </p>
+<p>Let's look at some examples using the baby name data. We can use the data.gov browser to preview the data, but we can only get the first 1000 lines. This file isn't too big (6.1M), but it contains 295,194 lines.</p>
+<div class="highlight"><pre><span class="n">first_baby_name</span> <span class="o">=</span> <span class="s">&quot;Daniel&quot;</span>
+<span class="k">print</span> <span class="n">first_baby_name</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Daniel</span>
+
+<span class="c"># Number of male babies with the three most popular names</span>
+<span class="n">first_baby_number</span> <span class="o">=</span> <span class="mi">3423</span>
+<span class="n">second_baby_number</span> <span class="o">=</span> <span class="mi">3106</span>
+<span class="n">third_baby_number</span> <span class="o">=</span> <span class="mi">3058</span>
+
+<span class="n">top_three_names</span> <span class="o">=</span> <span class="n">first_baby_number</span> <span class="o">+</span> <span class="n">second_baby_number</span> <span class="o">+</span> <span class="n">third_baby_number</span>
+<span class="k">print</span> <span class="n">top_three_names</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">9587</span>
+</pre></div>
+
+
+<p>In this example, we assign values to variables. In the first part of the example, we created a variable called <code>first_baby_name</code> to hold the string <code>"Daniel"</code>. When we pass the <code>first_baby_name</code> variable to the <code>print</code> function, <code>print</code> prints the contents of that variable.</p>
+<p>In the second part of the example, we assigned the integer <code>3423</code> to the variable <code>first_baby_number</code>, the integer <code>3106</code> to the variable <code>second_baby_number</code>, and the integer <code>3058</code> to the variable <code>third_baby_number</code>. We summed the three variables and assigned the result to the variable <code>top_three_names</code>. Again, the <code>print</code> function simply prints the contents of the <code>top_three_names</code> variable (as opposed to its name).</p>
+<p>Once variables have been set, they can be rewritten. This behavior can be confusing and zings even the most experienced programmers from time to time. Let's look at an example.</p>
+<div class="highlight"><pre><span class="n">length</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span>
+<span class="k">print</span> <span class="n">area</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span>
+
+<span class="c"># Change value of `length` variable.</span>
+<span class="n">length</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">print</span> <span class="n">length</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">6</span>
+
+<span class="c"># Does the value of `area` change?</span>
+<span class="k">print</span> <span class="n">area</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span>
+</pre></div>
+
+
+<p>In the first part of the example we set the <code>length</code> variable to the value <code>4</code> but changed it to <code>6</code> in the second part of the example. The value of <code>area</code> was set before we changed the value of <code>length</code>, so it doesn't change.</p>
+<h2>Special variable names</h2>
+<p>There are rules to naming variables.</p>
+<p>(PICTURE OF WALTER SOBCHACK)</p>
+<p>Variables cannot have the following names; they already mean things in Python and using them would cause massive confusion:</p>
+<div class="highlight"><pre><span class="bp">False</span>      <span class="k">class</span>      <span class="nc">finally</span>    <span class="ow">is</span>         <span class="k">return</span>
+<span class="bp">None</span>       <span class="k">continue</span>   <span class="k">for</span>        <span class="k">lambda</span>     <span class="k">try</span>
+<span class="bp">True</span>       <span class="k">def</span>        <span class="nf">from</span>       <span class="n">nonlocal</span>   <span class="k">while</span>
+<span class="ow">and</span>        <span class="k">del</span>        <span class="k">global</span>     <span class="ow">not</span>        <span class="k">with</span>
+<span class="k">as</span>         <span class="k">elif</span>       <span class="k">if</span>         <span class="ow">or</span>         <span class="k">yield</span>
+<span class="k">assert</span>     <span class="k">else</span>       <span class="kn">import</span>     <span class="nn">pass</span>
+<span class="k">break</span>      <span class="k">except</span>     <span class="ow">in</span>         <span class="k">raise</span>
+</pre></div>
+
+
+<p>Your variable <em>can</em> include one of those names, though:</p>
+<div class="highlight"><pre><span class="n">try_this</span> <span class="o">=</span> <span class="s">&quot;it works!&quot;</span>
+<span class="k">print</span> <span class="n">try_this</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">it</span> <span class="n">works</span><span class="err">!</span>
+</pre></div>
+
+
+<p>Additionally, variables</p>
+<ul>
+<li>Can only contain letters, numbers, and underscores (thus no minus signs: "-").</li>
+<li>Cannot start with a number (but can <em>contain</em> numbers).</li>
+<li>Are case-sensitive.</li>
+</ul>
+<div class="highlight"><pre><span class="n">two_chainz</span> <span class="o">=</span> <span class="s">&quot;no problem&quot;</span>
+<span class="n">_fine_but</span> <span class="o">=</span> <span class="s">&quot;leading underscores are legal, but they have a special meaning&quot;</span>
+
+
+<span class="c"># The following will all raise exceptions:</span>
+<span class="mi">2</span><span class="n">_chainz</span> <span class="o">=</span> <span class="s">&quot;not ok&quot;</span>
+<span class="n">wont</span><span class="o">-</span><span class="n">work</span> <span class="o">=</span> <span class="s">&quot;nope.&quot;</span>
+</pre></div>
+
+
+<h2>Comments</h2>
+<p>Comments are text in code, but which isn't executed by the Python interpreter. Comments begin with the <code>#</code> character (pound, not hashtag). As soon as the Python interpreter encounters the comment character on a line, it ignores the rest of the line. Comments are a great way to document your code as well as temporarily switch off certain lines from executing.</p>
+<h1>Conclusion</h1>
+<p>We have demonstrated some basic functionality of Python by interacting with the Python interpreter via the Jupyter notebook and <code>print</code> statements. We've also encountered variables.</p>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

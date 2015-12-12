@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Controlling program flow and functions</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Controlling program flow and functions</h1>
+    
+    <p>Oftentimes, your program will have to execute different behaviors depending on some condition. In this lesson, we will learn about <code>if</code> statements to perform different actions depending on what year the babies were born.</p>
+<h2>Concepts</h2>
+<ul>
+<li><code>if</code> statements</li>
+<li>Encapsulating functionality using functions</li>
+</ul>
+<h1>Making a decision: the <code>if</code> statement</h1>
+<p>In the last example, we wrote the 2011 baby data to a file based on the fact I told you that lines 120460 to 179044 were the 2011 data. Can't the computer do this kind of thing for us? Using an <code>if</code> statement, it can.</p>
+<p>Lets rework that last example by creating a variable called <code>babies_2011</code> that contains a list of the baby data from 2011.</p>
+<div class="highlight"><pre><span class="n">babies_2011</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">baby_datum</span> <span class="ow">in</span> <span class="n">baby_data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">baby_datum</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;2011&quot;</span><span class="p">):</span>
+        <span class="n">babies_2011</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby_datum</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Using the <code>elif</code> statement, we can select from more than a single choice. Lets say we wanted to create lists of the 2011 babies <em>and</em> the 2012 names. The example is nearly identical.</p>
+<div class="highlight"><pre><span class="n">babies_2011</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">babies_2012</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">baby_datum</span> <span class="ow">in</span> <span class="n">baby_data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">baby_datum</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;2011&quot;</span><span class="p">):</span>
+        <span class="n">babies_2011</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby_datum</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">baby_datum</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;2012&quot;</span><span class="p">):</span>
+        <span class="n">babies_2012</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby_datum</span><span class="p">)</span>
+</pre></div>
+
+
+<p>What if we wanted to collect all of the lines that weren't from 2011 or 2012? We use the <code>else</code> statement at the end of a Python <code>if</code> sequence:</p>
+<div class="highlight"><pre><span class="n">babies_2011</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">babies_2012</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">babies_other</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">baby_datum</span> <span class="ow">in</span> <span class="n">baby_data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">baby_datum</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;2011&quot;</span><span class="p">):</span>
+        <span class="n">babies_2011</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby_datum</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">baby_datum</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&quot;2012&quot;</span><span class="p">):</span>
+        <span class="n">babies_2012</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby_datum</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">babies_other</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby_datum</span><span class="p">)</span>
+</pre></div>
+
+
+<p>There's no condition associated with the <code>else</code> statement since it corresponds to "everything else."</p>
+<h2>Functions</h2>
+<p>We could write conditions for any of the years in which babies were born using <code>if</code> statements, but this approach quickly gets tedious -- what if we had baby name data for all years between 1900 and 2013? By writing a function, we can abstract this functionality to simply ask for the year and get the corresponding entries.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">filter_year</span><span class="p">(</span><span class="n">baby_data</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of baby data for a given year</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filtered_baby_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">baby_datum</span> <span class="ow">in</span> <span class="n">baby_data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">baby_datum</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+            <span class="n">filtered_baby_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby_datum</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filtered_baby_data</span>
+
+<span class="n">babies_2011</span> <span class="o">=</span> <span class="n">filter_year</span><span class="p">(</span><span class="n">baby_data</span><span class="p">,</span> <span class="s">&quot;2011&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>To create a function, we start with the <code>def</code> keyword followed by the function call signature. The call signature is the name of the function with any arguments the function might require. In our case, we are passing two items to the function: the <code>baby_data</code> we want to parse and the <code>year</code> on which we want to filter.</p>
+<p>The overall structure of the function definition should look familiar: we terminate the function call signature using a colon, and we include the function's code within an indented code block. The code for this function is almost identical to what we wrote before, we've just abstracted some of the functionality with the variables that were passed to the function.</p>
+<p>You will note that immediately following the function call signature there's some text enclosed by three double-quote characters (<code>"""</code>). This text is very special in python and is called the "docstring." Python programmers use docstrings to document the functionality of their functions. This text is not like a comment; Python actually carries the docstring around with the function. We can access docstrings from the ipython-notebook using the magic <code>?</code> following the function name.</p>
+<p>(Demonstrate example of the <code>filter_year</code> function).</p>
+<p>Also note the <code>return</code> statement at the bottom of the function. This statement tells python to return the specified data back to whoever called it and exit. Your function does not need a <code>return</code> statement, but you won't get any data out if you don't have it.</p>
+<h2>Better example: list of dicts</h2>
+<p>Lets face it, the function above could be a lot better. Here we are constrained by the quality of our data: we are dealing with a list of strings instead of a list of dicts. On the other hand, we have the toy data <code>babies</code> which is a list of dicts containing five baby names and associated information. Lets write a more general function that can filter this data on any field.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">filter_babies</span><span class="p">(</span><span class="n">babies</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return baby data where key matches the value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filtered_babies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">baby</span> <span class="ow">in</span> <span class="n">babies</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">baby</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">filtered_babies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">baby</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filtered_babies</span>
+</pre></div>
+
+
+<p>This new function allows us to filter on any of the keys of the baby dict. The following demos won't be super interesting because of the limited amount of data we have, but hopefully you will see the value in this function over the prior function.</p>
+<div class="highlight"><pre><span class="c"># Find all babies born in 2011</span>
+<span class="n">babies_2011</span> <span class="o">=</span> <span class="n">filter_babies</span><span class="p">(</span><span class="n">babies</span><span class="p">,</span> <span class="s">&quot;year&quot;</span><span class="p">,</span> <span class="mi">2011</span><span class="p">)</span>
+
+<span class="c"># Find all entries with name ALEXSANDER</span>
+<span class="n">babies_alexandar</span> <span class="o">=</span> <span class="n">filter_babies</span><span class="p">(</span><span class="n">babies</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;ALEXANDAR&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>One final thing that's important to talk about is data scope. The variables you create in a code block stay within that code block. Once the block ends, the data disappears unless it is <code>return</code>ed.</p>
+<p>NEED TO TALK ABOUT GLOBAL VARIABLES HERE.</p>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

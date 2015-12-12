@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Data visualization and external modules</title>
+        <link rel="stylesheet" href="http://shirtable.github.io/python-novice/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://shirtable.github.io/python-novice/">Shirtable novice Python workshop </a></h1>
+                <nav><ul>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Data visualization and external modules</h1>
+    
+    <p>Now that we've done some python programming, lets do some data visualization.</p>
+<h2>Concepts</h2>
+<ul>
+<li>Leveraging code in modules via <code>import</code></li>
+<li><code>matplotlib</code></li>
+</ul>
+<h1><code>matplotlib</code></h1>
+<p>One of the best things about Python is that it is used and developed by a huge number of people. Some of these people write code to do useful things and give the code away for free, posting it on particular sites so that you can use what they've written without writing it yourself.</p>
+<p>The <code>matplotlib</code> package is such code; it is the go-to package for generating plots from data. Lets make a plot of number of babies vs. year.</p>
+<p>First, we have to create a list of the number of babies each year. We can use the <code>babies</code> list of dicts from before as well as the <code>filter_babies</code> function.</p>
+<div class="highlight"><pre><span class="n">babies_per_year</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c"># The following list is short, so we&#39;ll key it in by hand.</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">babies_for_year</span> <span class="o">=</span> <span class="n">filter_babies</span><span class="p">(</span><span class="n">babies</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+
+    <span class="n">num_babies</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">baby</span> <span class="ow">in</span> <span class="n">babies_for_year</span><span class="p">:</span>
+        <span class="n">num_babies</span> <span class="o">=</span> <span class="n">num_babies</span> <span class="o">+</span> <span class="n">baby</span><span class="p">[</span><span class="s">&quot;count&quot;</span><span class="p">]</span>
+
+    <span class="n">babies_per_year</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_babies</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Next, we need to initialize the matplotlib environment in the Jupyter notebook.</p>
+<div class="highlight"><pre><span class="nf">%matplotlib</span> <span class="kr">inline</span>
+</pre></div>
+
+
+<p>This command is a Jupyter command and <em>not</em> a general Python command. It is simply to tell the Jupyter notebook to render the plots inside the notebook instead of popping open a new window containing the plot.</p>
+<p>Next, lets plot the data.</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+
+<span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">babies_per_year</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The one thing we haven't encountered in the above example is the <code>import</code> statement. The <code>matplotlib</code> module is installed on our system as a result of our installing Anaconda. This module contains all of the code needed to create plots. This <code>import</code> statement tells Python to import the <code>matplotlib</code> code into our environment so that we can use it. More specifically, we are importing just the <code>pyplot</code> submodule from the <code>matplotlib</code> module.</p>
+<h1>Exercises</h1>
+<ul>
+<li>Plot the number of female babies per year.</li>
+<li>Plot the number of male babies per year.</li>
+<li>Plot the number of babies for which gender is not recorded.</li>
+<li>Plot the ratio of male to female babies.</li>
+</ul>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
