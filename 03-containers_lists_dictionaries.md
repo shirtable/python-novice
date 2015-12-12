@@ -177,7 +177,7 @@ As mentioned previously, the key feature of a list is ordering items. This featu
 
 Dictionaries
 ============
-The key feature of a Python dictionary is labeling itmes in the collection. Take a look at the baby name data: it is comprised of four columns. There's no order to this data, and so it doesn't make sense trying to force an arbitrary order. Instead, we could just use a Python dictionary to access each datum using its label (called a "key" in Python parlance).
+The key feature of a Python dictionary is labeling items in the collection. Take a look at the baby name data: it is comprised of four columns. There's no order to this data, and so it doesn't make sense trying to force an arbitrary order. Instead, we could just use a Python dictionary to access each datum using its label (called a "key" in Python parlance).
 
 Consider the first entry corresponding to the name "DANIEL". We can collect all the associated data together in a dictionary like so:
 
@@ -215,9 +215,9 @@ You'll notice that we used strings as keys in the dictionary above. Python allow
 
 Tuples
 ======
-We won't spend much time at all on tuples except to say they are an immutable list. Tuples have important uses, but we won't need them in this course. However, they appear often enough that you should be aware of their existance.
+We won't spend much time at all on tuples except to say they are an immutable list. Tuples have important uses, but we won't need them in this course. However, they appear often enough that you should be aware of their existence.
 
-Tuples are created using parantheses instead of square brackets:
+Tuples are created using parentheses instead of square brackets:
 
 ```python
 tup = (1, 2, 3)
